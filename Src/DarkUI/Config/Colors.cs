@@ -6,107 +6,107 @@ namespace DarkUI.Config
     {
         public static Color GreyBackground
         {
-            get { return Color.FromArgb(60, 63, 65); }
+            get { return ColorTranslator.FromHtml("#3C3F41"); }
         }
 
         public static Color HeaderBackground
         {
-            get { return Color.FromArgb(57, 60, 62); }
+            get { return ColorTranslator.FromHtml("#393C3E"); }
         }
 
         public static Color BlueBackground
         {
-            get { return Color.FromArgb(66, 77, 95); }
+            get { return ColorTranslator.FromHtml("#424D5F"); }
         }
 
         public static Color DarkBlueBackground
         {
-            get { return Color.FromArgb(52, 57, 66); }
+            get { return ColorTranslator.FromHtml("#343942"); }
         }
 
         public static Color DarkBackground
         {
-            get { return Color.FromArgb(43, 43, 43); }
+            get { return ColorTranslator.FromHtml("#2B2B2B"); }
         }
 
         public static Color MediumBackground
         {
-            get { return Color.FromArgb(49, 51, 53); }
+            get { return ColorTranslator.FromHtml("#313335"); }
         }
 
         public static Color LightBackground
         {
-            get { return Color.FromArgb(69, 73, 74); }
+            get { return ColorTranslator.FromHtml("#45494A"); }
         }
 
         public static Color LighterBackground
         {
-            get { return Color.FromArgb(95, 101, 102); }
+            get { return ColorTranslator.FromHtml("#5F6566"); }
         }
 
         public static Color LightestBackground
         {
-            get { return Color.FromArgb(178, 178, 178); }
+            get { return ColorTranslator.FromHtml("#B2B2B2"); }
         }
 
         public static Color LightBorder
         {
-            get { return Color.FromArgb(81, 81, 81); }
+            get { return ColorTranslator.FromHtml("#515151"); }
         }
 
         public static Color DarkBorder
         {
-            get { return Color.FromArgb(51, 51, 51); }
+            get { return ColorTranslator.FromHtml("#333333"); }
         }
 
         public static Color LightText
         {
-            get { return Color.FromArgb(220, 220, 220); }
+            get { return ColorTranslator.FromHtml("#DCDCDC"); }
         }
 
         public static Color DisabledText
         {
-            get { return Color.FromArgb(153, 153, 153); }
+            get { return ColorTranslator.FromHtml("#999999"); }
         }
 
         public static Color BlueHighlight
         {
-            get { return Color.FromArgb(104, 151, 187); }
+            get { return ColorTranslator.FromHtml("#6897BB"); }
         }
 
         public static Color BlueSelection
         {
-            get { return Color.FromArgb(75, 110, 175); }
+            get { return ColorTranslator.FromHtml("#4B6EAF"); }
         }
 
         public static Color GreyHighlight
         {
-            get { return Color.FromArgb(122, 128, 132); }
+            get { return ColorTranslator.FromHtml("#7A8084"); }
         }
 
         public static Color GreySelection
         {
-            get { return Color.FromArgb(92, 92, 92); }
+            get { return ColorTranslator.FromHtml("#5C5C5C"); }
         }
 
         public static Color DarkGreySelection
         {
-            get { return Color.FromArgb(82, 82, 82); }
+            get { return ColorTranslator.FromHtml("#525252"); }
         }
 
         public static Color DarkBlueBorder
         {
-            get { return Color.FromArgb(51, 61, 78); }
+            get { return ColorTranslator.FromHtml("#333D4E"); }
         }
 
         public static Color LightBlueBorder
         {
-            get { return Color.FromArgb(86, 97, 114); }
+            get { return ColorTranslator.FromHtml("#566172"); }
         }
 
         public static Color ActiveControl
         {
-            get { return Color.FromArgb(159, 178, 196); }
+            get { return ColorTranslator.FromHtml("#9FB2C4"); }
         }
     }
 }

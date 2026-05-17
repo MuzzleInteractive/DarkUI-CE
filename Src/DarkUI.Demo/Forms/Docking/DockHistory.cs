@@ -5,8 +5,6 @@ namespace DarkUI.Demo.Forms.Docking
 {
     public partial class DockHistory : DarkToolWindow
     {
-        #region Constructor Region
-
         public DockHistory()
         {
             InitializeComponent();
@@ -18,7 +16,5 @@ namespace DarkUI.Demo.Forms.Docking
                 lstHistory.Items.Add(item);
             }
         }
-
-        #endregion
     }
 }

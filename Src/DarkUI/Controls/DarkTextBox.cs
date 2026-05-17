@@ -5,8 +5,6 @@ namespace DarkUI.Controls
 {
     public class DarkTextBox : TextBox
     {
-        #region Constructor Region
-
         public DarkTextBox()
         {
             BackColor = Colors.LightBackground;
@@ -14,7 +12,5 @@ namespace DarkUI.Controls
             Padding = new Padding(2, 2, 2, 2);
             BorderStyle = BorderStyle.FixedSingle;
         }
-
-        #endregion
     }
 }

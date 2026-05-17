@@ -5,18 +5,12 @@ namespace DarkUI.Controls
 {
     public abstract class DarkScrollView : DarkScrollBase
     {
-        #region Constructor Region
-
         protected DarkScrollView()
         {
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.ResizeRedraw |
                      ControlStyles.UserPaint, true);
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected abstract void PaintContent(Graphics g);
 
@@ -54,7 +48,5 @@ namespace DarkUI.Controls
         {
             // Absorb event
         }
-
-        #endregion
     }
 }

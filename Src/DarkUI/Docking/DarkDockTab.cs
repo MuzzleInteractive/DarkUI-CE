@@ -4,8 +4,6 @@ namespace DarkUI.Docking
 {
     internal class DarkDockTab
     {
-        #region Property Region
-
         public DarkDockContent DockContent { get; set; }
 
         public Rectangle ClientRectangle { get; set; }
@@ -18,18 +16,10 @@ namespace DarkUI.Docking
 
         public bool ShowSeparator { get; set; }
 
-        #endregion
-
-        #region Constructor Region
-
         public DarkDockTab(DarkDockContent content)
         {
             DockContent = content;
         }
-
-        #endregion
-
-        #region Method Region
 
         public int CalculateWidth(Graphics g, Font font)
         {
@@ -38,7 +28,5 @@ namespace DarkUI.Docking
 
             return width;
         }
-
-        #endregion
     }
 }

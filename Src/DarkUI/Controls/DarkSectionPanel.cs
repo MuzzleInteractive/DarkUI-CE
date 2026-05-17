@@ -7,14 +7,6 @@ namespace DarkUI.Controls
 {
     public class DarkSectionPanel : Panel
     {
-        #region Field Region
-
-        private string _sectionHeader;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Padding Padding
@@ -35,9 +27,7 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private string _sectionHeader;
 
         public DarkSectionPanel()
         {
@@ -47,10 +37,6 @@ namespace DarkUI.Controls
 
             base.Padding = new Padding(1, 25, 1, 1);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnEnter(System.EventArgs e)
         {
@@ -73,10 +59,6 @@ namespace DarkUI.Controls
             if (Controls.Count > 0)
                 Controls[0].Focus();
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -141,7 +123,5 @@ namespace DarkUI.Controls
         {
             // Absorb event
         }
-
-        #endregion
     }
 }

@@ -7,18 +7,11 @@ namespace DarkUI.Win32
 {
     public class DockResizeFilter : IMessageFilter
     {
-        #region Field Region
-
         private DarkDockPanel _dockPanel;
-
         private Timer _dragTimer;
         private bool _isDragging;
         private Point _initialContact;
         private DarkDockSplitter _activeSplitter;
-
-        #endregion
-
-        #region Constructor Region
 
         public DockResizeFilter(DarkDockPanel dockPanel)
         {
@@ -28,10 +21,6 @@ namespace DarkUI.Win32
             _dragTimer.Interval = 1;
             _dragTimer.Tick += DragTimer_Tick;
         }
-
-        #endregion
-
-        #region IMessageFilter Region
 
         public bool PreFilterMessage(ref Message m)
         {
@@ -99,10 +88,6 @@ namespace DarkUI.Win32
             return false;
         }
 
-        #endregion
-
-        #region Event Handler Region
-
         private void DragTimer_Tick(object sender, EventArgs e)
         {
             if (_dockPanel.MouseButtonState != MouseButtons.Left)
@@ -114,10 +99,6 @@ namespace DarkUI.Win32
             var difference = new Point(_initialContact.X - Cursor.Position.X, _initialContact.Y - Cursor.Position.Y);
             _activeSplitter.UpdateOverlay(difference);
         }
-
-        #endregion
-
-        #region Method Region
 
         private void StartDrag(DarkDockSplitter splitter)
         {
@@ -168,7 +149,5 @@ namespace DarkUI.Win32
             Cursor.Current = Cursors.Default;
             CheckCursor();
         }
-
-        #endregion
     }
 }

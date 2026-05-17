@@ -9,16 +9,6 @@ namespace DarkUI.Controls
 {
     public class DarkRadioButton : RadioButton
     {
-        #region Field Region
-
-        private DarkControlState _controlState = DarkControlState.Normal;
-
-        private bool _spacePressed;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Appearance Appearance
@@ -124,9 +114,8 @@ namespace DarkUI.Controls
             get { return false; }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private DarkControlState _controlState = DarkControlState.Normal;
+        private bool _spacePressed;
 
         public DarkRadioButton()
         {
@@ -136,10 +125,6 @@ namespace DarkUI.Controls
                      ControlStyles.UserPaint, true);
         }
 
-        #endregion
-
-        #region Method Region
-
         private void SetControlState(DarkControlState controlState)
         {
             if (_controlState != controlState)
@@ -148,10 +133,6 @@ namespace DarkUI.Controls
                 Invalidate();
             }
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -237,10 +218,6 @@ namespace DarkUI.Controls
                 SetControlState(DarkControlState.Hover);
         }
 
-        #endregion
-
-        #region Paint Region
-
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -314,7 +291,5 @@ namespace DarkUI.Controls
                 g.DrawString(Text, Font, b, modRect, stringFormat);
             }
         }
-
-        #endregion
     }
 }

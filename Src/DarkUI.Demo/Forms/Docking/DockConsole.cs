@@ -5,8 +5,6 @@ namespace DarkUI.Demo.Forms.Docking
 {
     public partial class DockConsole : DarkToolWindow
     {
-        #region Constructor Region
-
         public DockConsole()
         {
             InitializeComponent();
@@ -18,7 +16,5 @@ namespace DarkUI.Demo.Forms.Docking
                 lstConsole.Items.Add(item);
             }
         }
-
-        #endregion
     }
 }

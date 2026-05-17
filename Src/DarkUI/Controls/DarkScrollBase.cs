@@ -8,35 +8,6 @@ namespace DarkUI.Controls
 {
     public abstract class DarkScrollBase : Control
     {
-        #region Event Region
-
-        public event EventHandler ViewportChanged;
-        public event EventHandler ContentSizeChanged;
-
-        #endregion
-
-        #region Field Region
-
-        protected readonly DarkScrollBar _vScrollBar;
-        protected readonly DarkScrollBar _hScrollBar;
-
-        private Size _visibleSize;
-        private Size _contentSize;
-
-        private Rectangle _viewport;
-
-        private Point _offsetMousePosition;
-
-        private int _maxDragChange = 0;
-        private Timer _dragTimer;
-
-        private bool _hideScrollBars = true;
-
-        #endregion
-
-        #region Property Region
-
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Rectangle Viewport
@@ -103,9 +74,18 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
+        protected readonly DarkScrollBar _vScrollBar;
+        protected readonly DarkScrollBar _hScrollBar;
+        private Size _visibleSize;
+        private Size _contentSize;
+        private Rectangle _viewport;
+        private Point _offsetMousePosition;
+        private int _maxDragChange = 0;
+        private Timer _dragTimer;
+        private bool _hideScrollBars = true;
 
-        #region Constructor Region
+        public event EventHandler ViewportChanged;
+        public event EventHandler ContentSizeChanged;
 
         protected DarkScrollBase()
         {
@@ -128,10 +108,6 @@ namespace DarkUI.Controls
             _dragTimer.Interval = 1;
             _dragTimer.Tick += DragTimer_Tick;
         }
-
-        #endregion
-
-        #region Method Region
 
         private void UpdateScrollBars()
         {
@@ -263,10 +239,6 @@ namespace DarkUI.Controls
         {
             return new Rectangle(new Point(rect.Left - Viewport.Left, rect.Top - Viewport.Top), rect.Size);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnCreateControl()
         {
@@ -418,7 +390,5 @@ namespace DarkUI.Controls
                 }
             }
         }
-
-        #endregion
     }
 }

@@ -6,29 +6,15 @@ namespace DarkUI.Collections
 {
     public class ObservableList<T> : List<T>, IDisposable
     {
-        #region Field Region
-
         private bool _disposed;
-
-        #endregion
-
-        #region Event Region
 
         public event EventHandler<ObservableListModified<T>> ItemsAdded;
         public event EventHandler<ObservableListModified<T>> ItemsRemoved;
-
-        #endregion
-
-        #region Destructor Region
 
         ~ObservableList()
         {
             Dispose(false);
         }
-
-        #endregion
-
-        #region Dispose Region
 
         public void Dispose()
         {
@@ -49,10 +35,6 @@ namespace DarkUI.Collections
                 _disposed = true;
             }
         }
-
-        #endregion
-
-        #region Method Region
 
         public new void Add(T item)
         {
@@ -84,11 +66,9 @@ namespace DarkUI.Collections
         {
             ObservableListModified<T> removed = new ObservableListModified<T>(this.ToList<T>());
             base.Clear();
-            
+
             if (removed.Items.Count() > 0 && ItemsRemoved != null)
                 ItemsRemoved(this, removed);
         }
-
-        #endregion
     }
 }

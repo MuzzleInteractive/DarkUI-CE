@@ -6,32 +6,6 @@ namespace DarkUI.Controls
 {
     public class DarkTreeNode
     {
-        #region Event Region
-
-        public event EventHandler<ObservableListModified<DarkTreeNode>> ItemsAdded;
-        public event EventHandler<ObservableListModified<DarkTreeNode>> ItemsRemoved;
-
-        public event EventHandler TextChanged;
-        public event EventHandler NodeExpanded;
-        public event EventHandler NodeCollapsed;
-
-        #endregion
-
-        #region Field Region
-
-        private string _text;
-        private bool _isRoot;
-        private DarkTreeView _parentTree;
-        private DarkTreeNode _parentNode;
-
-        private ObservableList<DarkTreeNode> _nodes;
-
-        private bool _expanded;
-
-        #endregion
-
-        #region Property Region
-
         public string Text
         {
             get { return _text; }
@@ -160,6 +134,29 @@ namespace DarkUI.Controls
 
         public int VisibleIndex { get; set; }
 
+        private string _text;
+        private bool _isRoot;
+        private DarkTreeView _parentTree;
+        private DarkTreeNode _parentNode;
+        private ObservableList<DarkTreeNode> _nodes;
+        private bool _expanded;
+
+        public event EventHandler<ObservableListModified<DarkTreeNode>> ItemsAdded;
+        public event EventHandler<ObservableListModified<DarkTreeNode>> ItemsRemoved;
+        public event EventHandler TextChanged;
+        public event EventHandler NodeExpanded;
+        public event EventHandler NodeCollapsed;
+
+        public DarkTreeNode()
+        {
+            Nodes = new ObservableList<DarkTreeNode>();
+        }
+
+        public DarkTreeNode(string text) : this()
+        {
+            Text = text;
+        }
+
         public bool IsNodeAncestor(DarkTreeNode node)
         {
             var parent = ParentNode;
@@ -173,25 +170,6 @@ namespace DarkUI.Controls
 
             return false;
         }
-
-        #endregion
-
-        #region Constructor Region
-
-        public DarkTreeNode()
-        {
-            Nodes = new ObservableList<DarkTreeNode>();
-        }
-
-        public DarkTreeNode(string text)
-            : this()
-        {
-            Text = text;
-        }
-
-        #endregion
-
-        #region Method Region
 
         public void Remove()
         {
@@ -211,10 +189,6 @@ namespace DarkUI.Controls
                 parent = parent.ParentNode;
             }
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         private void OnTextChanged()
         {
@@ -253,7 +227,5 @@ namespace DarkUI.Controls
             if (ItemsRemoved != null)
                 ItemsRemoved(this, e);
         }
-
-        #endregion
     }
 }

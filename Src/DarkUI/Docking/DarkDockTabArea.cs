@@ -7,17 +7,6 @@ namespace DarkUI.Docking
 {
     internal class DarkDockTabArea
     {
-        #region Field Region
-
-        private Dictionary<DarkDockContent, DarkDockTab> _tabs = new Dictionary<DarkDockContent, DarkDockTab>();
-
-        private List<ToolStripMenuItem> _menuItems = new List<ToolStripMenuItem>();
-        private DarkContextMenu _tabMenu = new DarkContextMenu();
-
-        #endregion
-
-        #region Property Region
-
         public DarkDockArea DockArea { get; private set; }
 
         public Rectangle ClientRectangle { get; set; }
@@ -34,18 +23,14 @@ namespace DarkUI.Docking
 
         public DarkDockTab ClickedCloseButton { get; set; }
 
-        #endregion
-        
-        #region Constructor Region
+        private Dictionary<DarkDockContent, DarkDockTab> _tabs = new Dictionary<DarkDockContent, DarkDockTab>();
+        private List<ToolStripMenuItem> _menuItems = new List<ToolStripMenuItem>();
+        private DarkContextMenu _tabMenu = new DarkContextMenu();
 
         public DarkDockTabArea(DarkDockArea dockArea)
         {
             DockArea = dockArea;
         }
-
-        #endregion
-
-        #region Method Region
 
         public void ShowMenu(Control control, Point location)
         {
@@ -101,7 +86,5 @@ namespace DarkUI.Docking
             foreach (var item in orderedItems)
                 _tabMenu.Items.Add(item);
         }
-
-        #endregion
     }
 }

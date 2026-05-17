@@ -6,8 +6,6 @@ namespace DarkUI.Controls
 {
     public class DarkSeparator : Control
     {
-        #region Constructor Region
-
         public DarkSeparator()
         {
             SetStyle(ControlStyles.Selectable, false);
@@ -15,10 +13,6 @@ namespace DarkUI.Controls
             Dock = DockStyle.Top;
             Size = new Size(1, 2);
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -39,7 +33,5 @@ namespace DarkUI.Controls
         {
             // Absorb event
         }
-
-        #endregion
     }
 }

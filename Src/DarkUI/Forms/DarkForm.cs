@@ -7,14 +7,6 @@ namespace DarkUI.Forms
 {
     public class DarkForm : Form
     {
-        #region Field Region
-
-        private bool _flatBorder;
-
-        #endregion
-
-        #region Property Region
-
         [Category("Appearance")]
         [Description("Determines whether a single pixel border should be rendered around the form.")]
         [DefaultValue(false)]
@@ -28,18 +20,12 @@ namespace DarkUI.Forms
             }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private bool _flatBorder;
 
         public DarkForm()
         {
             BackColor = Colors.GreyBackground;
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -56,7 +42,5 @@ namespace DarkUI.Forms
                 g.DrawRectangle(p, modRect);
             }
         }
-
-        #endregion
     }
 }

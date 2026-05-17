@@ -1,28 +1,15 @@
 ﻿using DarkUI.Config;
+using DarkUI.Icons;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System;
-using DarkUI.Icons;
 
 namespace DarkUI.Docking
 {
     [ToolboxItem(false)]
     public class DarkToolWindow : DarkDockContent
     {
-        #region Field Region
-
-        private Rectangle _closeButtonRect;
-        private bool _closeButtonHot = false;
-        private bool _closeButtonPressed = false;
-
-        private Rectangle _headerRect;
-        private bool _shouldDrag;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Padding Padding
@@ -30,9 +17,11 @@ namespace DarkUI.Docking
             get { return base.Padding; }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private Rectangle _closeButtonRect;
+        private bool _closeButtonHot = false;
+        private bool _closeButtonPressed = false;
+        private Rectangle _headerRect;
+        private bool _shouldDrag;
 
         public DarkToolWindow()
         {
@@ -45,10 +34,6 @@ namespace DarkUI.Docking
 
             UpdateCloseButton();
         }
-
-        #endregion
-
-        #region Method Region
 
         private bool IsActive()
         {
@@ -76,10 +61,6 @@ namespace DarkUI.Docking
                 Height = DockIcons.tw_close.Height
             };
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnResize(EventArgs e)
         {
@@ -149,10 +130,6 @@ namespace DarkUI.Docking
 
             Invalidate();
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -226,7 +203,5 @@ namespace DarkUI.Docking
         {
             // Absorb event
         }
-
-        #endregion
     }
 }

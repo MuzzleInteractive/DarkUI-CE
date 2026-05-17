@@ -12,28 +12,6 @@ namespace DarkUI.Controls
 {
     public class DarkListView : DarkScrollView
     {
-        #region Event Region
-
-        public event EventHandler SelectedIndicesChanged;
-
-        #endregion
-
-        #region Field Region
-
-        private int _itemHeight = 20;
-        private bool _multiSelect;
-
-        private readonly int _iconSize = 16;
-
-        private ObservableCollection<DarkListItem> _items;
-        private List<int> _selectedIndices;
-        private int _anchoredItemStart = -1;
-        private int _anchoredItemEnd = -1;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ObservableCollection<DarkListItem> Items
@@ -86,19 +64,21 @@ namespace DarkUI.Controls
         [DefaultValue(false)]
         public bool ShowIcons { get; set; }
 
-        #endregion
+        private int _itemHeight = 20;
+        private bool _multiSelect;
+        private readonly int _iconSize = 16;
+        private ObservableCollection<DarkListItem> _items;
+        private List<int> _selectedIndices;
+        private int _anchoredItemStart = -1;
+        private int _anchoredItemEnd = -1;
 
-        #region Constructor Region
+        public event EventHandler SelectedIndicesChanged;
 
         public DarkListView()
         {
             Items = new ObservableCollection<DarkListItem>();
             _selectedIndices = new List<int>();
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -240,10 +220,6 @@ namespace DarkUI.Controls
 
             EnsureVisible();
         }
-
-        #endregion
-
-        #region Method Region
 
         public int GetItemIndex(DarkListItem item)
         {
@@ -496,10 +472,6 @@ namespace DarkUI.Controls
             return result;
         }
 
-        #endregion
-
-        #region Paint Region
-
         protected override void PaintContent(Graphics g)
         {
             var range = ItemIndexesInView().ToList();
@@ -559,7 +531,5 @@ namespace DarkUI.Controls
                 }
             }
         }
-
-        #endregion
     }
 }

@@ -1,13 +1,10 @@
-﻿using System;
-using DarkUI.Controls;
+﻿using DarkUI.Controls;
 using DarkUI.Docking;
 
 namespace DarkUI.Demo.Forms.Docking
 {
     public partial class DockLayers : DarkToolWindow
     {
-        #region Constructor Region
-
         public DockLayers()
         {
             InitializeComponent();
@@ -26,7 +23,5 @@ namespace DarkUI.Demo.Forms.Docking
                 cmbList.Items.Add(new DarkDropdownItem($"Dropdown item #{i}"));
             }
         }
-
-        #endregion
     }
 }

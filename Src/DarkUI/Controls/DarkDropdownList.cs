@@ -1,47 +1,16 @@
 ﻿using DarkUI.Config;
 using DarkUI.Icons;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DarkUI.Controls
 {
     public class DarkDropdownList : Control
     {
-        #region Event Region
-
-        public event EventHandler SelectedItemChanged;
-
-        #endregion
-
-        #region Field Region
-
-        private DarkControlState _controlState = DarkControlState.Normal;
-
-        private ObservableCollection<DarkDropdownItem> _items = new ObservableCollection<DarkDropdownItem>();
-        private DarkDropdownItem _selectedItem;
-
-        private DarkContextMenu _menu = new DarkContextMenu();
-        private bool _menuOpen = false;
-
-        private bool _showBorder = true;
-
-        private int _itemHeight = 22;
-        private int _maxHeight = 130;
-
-        private readonly int _iconSize = 16;
-
-        private ToolStripDropDownDirection _dropdownDirection = ToolStripDropDownDirection.Default;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ObservableCollection<DarkDropdownItem> Items
@@ -121,9 +90,18 @@ namespace DarkUI.Controls
             set { _dropdownDirection = value; }
         }
 
-        #endregion
+        private DarkControlState _controlState = DarkControlState.Normal;
+        private ObservableCollection<DarkDropdownItem> _items = new ObservableCollection<DarkDropdownItem>();
+        private DarkDropdownItem _selectedItem;
+        private DarkContextMenu _menu = new DarkContextMenu();
+        private bool _menuOpen = false;
+        private bool _showBorder = true;
+        private int _itemHeight = 22;
+        private int _maxHeight = 130;
+        private readonly int _iconSize = 16;
+        private ToolStripDropDownDirection _dropdownDirection = ToolStripDropDownDirection.Default;
 
-        #region Constructor Region
+        public event EventHandler SelectedItemChanged;
 
         public DarkDropdownList()
         {
@@ -141,10 +119,6 @@ namespace DarkUI.Controls
 
             SetControlState(DarkControlState.Normal);
         }
-
-        #endregion
-
-        #region Method Region
 
         private ToolStripMenuItem GetMenuItem(DarkDropdownItem item)
         {
@@ -217,10 +191,6 @@ namespace DarkUI.Controls
 
             _menu.Size = new Size(width, height);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -389,10 +359,6 @@ namespace DarkUI.Controls
                 SetControlState(DarkControlState.Hover);
         }
 
-        #endregion
-
-        #region Render Region
-
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -490,7 +456,5 @@ namespace DarkUI.Controls
                 }
             }
         }
-
-        #endregion
     }
 }

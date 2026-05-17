@@ -8,8 +8,6 @@ namespace DarkUI.Controls
 {
     public class DarkGroupBox : GroupBox
     {
-        private Color _borderColor = Colors.DarkBorder;
-
         [Category("Appearance")]
         [Description("Determines the color of the border.")]
         [DefaultValue(typeof(Color), "51, 51, 51")] // /!\ Need to change this later
@@ -22,6 +20,8 @@ namespace DarkUI.Controls
                 Invalidate();
             }
         }
+
+        private Color _borderColor = Colors.DarkBorder;
 
         public DarkGroupBox()
         {

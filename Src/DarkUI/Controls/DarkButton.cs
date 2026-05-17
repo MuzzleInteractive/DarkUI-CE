@@ -10,21 +10,6 @@ namespace DarkUI.Controls
     [DefaultEvent("Click")]
     public class DarkButton : Button
     {
-        #region Field Region
-
-        private DarkButtonStyle _style = DarkButtonStyle.Normal;
-        private DarkControlState _buttonState = DarkControlState.Normal;
-
-        private bool _isDefault;
-        private bool _spacePressed;
-
-        private int _padding = Consts.Padding / 2;
-        private int _imagePadding = 5; // Consts.Padding / 2
-
-        #endregion
-
-        #region Designer Property Region
-
         [DefaultValue("")]
         public new string Text
         {
@@ -72,10 +57,6 @@ namespace DarkUI.Controls
                 Invalidate();
             }
         }
-
-        #endregion
-
-        #region Code Property Region
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -133,9 +114,12 @@ namespace DarkUI.Controls
             get { return false; }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private DarkButtonStyle _style = DarkButtonStyle.Normal;
+        private DarkControlState _buttonState = DarkControlState.Normal;
+        private bool _isDefault;
+        private bool _spacePressed;
+        private int _padding = Consts.Padding / 2;
+        private int _imagePadding = 5; // Consts.Padding / 2
 
         public DarkButton()
         {
@@ -150,10 +134,6 @@ namespace DarkUI.Controls
             Padding = new Padding(_padding);
         }
 
-        #endregion
-
-        #region Method Region
-
         private void SetButtonState(DarkControlState buttonState)
         {
             if (_buttonState != buttonState)
@@ -162,10 +142,6 @@ namespace DarkUI.Controls
                 Invalidate();
             }
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnCreateControl()
         {
@@ -302,10 +278,6 @@ namespace DarkUI.Controls
             Invalidate();
         }
 
-        #endregion
-
-        #region Paint Region
-
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -417,7 +389,5 @@ namespace DarkUI.Controls
                 g.DrawString(Text, Font, b, modRect, stringFormat);
             }
         }
-
-        #endregion
     }
 }

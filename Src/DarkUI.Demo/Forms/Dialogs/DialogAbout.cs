@@ -5,8 +5,6 @@ namespace DarkUI.Demo.Forms.Dialogs
 {
     public partial class DialogAbout : DarkDialog
     {
-        #region Constructor Region
-
         public DialogAbout()
         {
             InitializeComponent();
@@ -14,7 +12,5 @@ namespace DarkUI.Demo.Forms.Dialogs
             lblVersion.Text = $"Version: {Application.ProductVersion.ToString()}";
             btnOk.Text = "Close";
         }
-
-        #endregion
     }
 }

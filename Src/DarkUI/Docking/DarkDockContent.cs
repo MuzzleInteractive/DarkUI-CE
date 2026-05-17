@@ -8,21 +8,6 @@ namespace DarkUI.Docking
     [ToolboxItem(false)]
     public class DarkDockContent : UserControl
     {
-        #region Event Handler Region
-
-        public event EventHandler DockTextChanged;
-
-        #endregion
-
-        #region Field Region
-
-        private string _dockText;
-        private Image _icon;
-
-        #endregion
-
-        #region Property Region
-
         [Category("Appearance")]
         [Description("Determines the text that will appear in the content tabs and headers.")]
         [DefaultValue("")]
@@ -85,26 +70,20 @@ namespace DarkUI.Docking
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int Order { get; set; }
 
-        #endregion
+        private string _dockText;
+        private Image _icon;
 
-        #region Constructor Region
+        public event EventHandler DockTextChanged;
 
         public DarkDockContent()
-        { }
-
-        #endregion
-
-        #region Method Region
+        {
+        }
 
         public virtual void Close()
         {
             if (DockPanel != null)
                 DockPanel.RemoveContent(this);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnEnter(EventArgs e)
         {
@@ -115,7 +94,5 @@ namespace DarkUI.Docking
 
             DockPanel.ActiveContent = this;
         }
-
-        #endregion
     }
 }

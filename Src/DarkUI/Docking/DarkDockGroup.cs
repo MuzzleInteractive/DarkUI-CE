@@ -12,19 +12,6 @@ namespace DarkUI.Docking
     [ToolboxItem(false)]
     public class DarkDockGroup : Panel
     {
-        #region Field Region
-
-        private List<DarkDockContent> _contents = new List<DarkDockContent>();
-
-        private Dictionary<DarkDockContent, DarkDockTab> _tabs = new Dictionary<DarkDockContent, DarkDockTab>();
-
-        private DarkDockTabArea _tabArea;
-
-        private DarkDockTab _dragTab = null;
-
-        #endregion
-
-        #region Property Region
 
         public DarkDockPanel DockPanel { get; private set; }
 
@@ -39,9 +26,10 @@ namespace DarkUI.Docking
 
         public int ContentCount { get { return _contents.Count; } }
 
-        #endregion
-
-        #region Constructor Region
+        private List<DarkDockContent> _contents = new List<DarkDockContent>();
+        private Dictionary<DarkDockContent, DarkDockTab> _tabs = new Dictionary<DarkDockContent, DarkDockTab>();
+        private DarkDockTabArea _tabArea;
+        private DarkDockTab _dragTab = null;
 
         public DarkDockGroup(DarkDockPanel dockPanel, DarkDockRegion dockRegion, int order)
         {
@@ -59,10 +47,6 @@ namespace DarkUI.Docking
 
             DockPanel.ActiveContentChanged += DockPanel_ActiveContentChanged;
         }
-
-        #endregion
-
-        #region Method Region
 
         public void AddContent(DarkDockContent dockContent)
         {
@@ -391,10 +375,6 @@ namespace DarkUI.Docking
             return new Rectangle(PointToTabArea(rectangle.Location), rectangle.Size);
         }
 
-        #endregion
-
-        #region Event Handler Region
-
         protected override void OnResize(EventArgs eventargs)
         {
             base.OnResize(eventargs);
@@ -441,7 +421,7 @@ namespace DarkUI.Docking
                     if (_dragTab.DockContent.Order < maxOrder)
                     {
                         var otherTabs = _tabs.Values.Where(t => t.DockContent.Order == _dragTab.DockContent.Order + 1).ToList();
-                        if(otherTabs.Count == 0)
+                        if (otherTabs.Count == 0)
                             return;
 
                         var otherTab = otherTabs.First();
@@ -533,7 +513,7 @@ namespace DarkUI.Docking
                         EnsureVisible();
 
                         _dragTab = tab;
-   
+
                         return;
                     }
                 }
@@ -614,10 +594,6 @@ namespace DarkUI.Docking
         {
             BuildTabs();
         }
-
-        #endregion
-
-        #region Render Region
 
         public void Redraw()
         {
@@ -792,7 +768,5 @@ namespace DarkUI.Docking
         {
             // Absorb event
         }
-
-        #endregion
     }
 }

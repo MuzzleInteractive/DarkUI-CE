@@ -1,5 +1,4 @@
 ﻿using DarkUI.Config;
-using DarkUI.Controls;
 using DarkUI.Icons;
 using System;
 using System.Drawing;
@@ -9,8 +8,6 @@ namespace DarkUI.Renderers
 {
     public class DarkMenuRenderer : ToolStripRenderer
     {
-        #region Initialisation Region
-
         protected override void Initialize(ToolStrip toolStrip)
         {
             base.Initialize(toolStrip);
@@ -31,10 +28,6 @@ namespace DarkUI.Renderers
                 item.Margin = new Padding(0, 0, 0, 1);
             }
         }
-
-        #endregion
-
-        #region Render Region
 
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
         {
@@ -109,7 +102,7 @@ namespace DarkUI.Renderers
 
             if (e.Item.Enabled)
             {
-                
+
                 var bgColor = e.Item.Selected ? Colors.GreyHighlight : e.Item.BackColor;
 
                 // Normal item
@@ -133,7 +126,5 @@ namespace DarkUI.Renderers
                 }
             }
         }
-
-        #endregion
     }
 }

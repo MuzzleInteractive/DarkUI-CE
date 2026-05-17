@@ -16,47 +16,6 @@ namespace DarkUI.Controls
 {
     public class DarkTreeView : DarkScrollView
     {
-        #region Event Region
-
-        public event EventHandler SelectedNodesChanged;
-        public event EventHandler AfterNodeExpand;
-        public event EventHandler AfterNodeCollapse;
-
-        #endregion
-
-        #region Field Region
-
-        private bool _disposed;
-
-        private readonly int _expandAreaSize = 16;
-        private readonly int _iconSize = 16;
-
-        private int _itemHeight = 20;
-        private int _indent = 20;
-
-        private ObservableList<DarkTreeNode> _nodes;
-        private ObservableCollection<DarkTreeNode> _selectedNodes;
-
-        private DarkTreeNode _anchoredNodeStart;
-        private DarkTreeNode _anchoredNodeEnd;
-
-        private Bitmap _nodeClosed;
-        private Bitmap _nodeClosedHover;
-        private Bitmap _nodeClosedHoverSelected;
-        private Bitmap _nodeOpen;
-        private Bitmap _nodeOpenHover;
-        private Bitmap _nodeOpenHoverSelected;
-
-        private DarkTreeNode _provisionalNode;
-        private DarkTreeNode _dropNode;
-        private bool _provisionalDragging;
-        private List<DarkTreeNode> _dragNodes;
-        private Point _dragPos;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ObservableList<DarkTreeNode> Nodes
@@ -142,9 +101,30 @@ namespace DarkUI.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IComparer<DarkTreeNode> TreeViewNodeSorter { get; set; }
 
-        #endregion
+        private bool _disposed;
+        private readonly int _expandAreaSize = 16;
+        private readonly int _iconSize = 16;
+        private int _itemHeight = 20;
+        private int _indent = 20;
+        private ObservableList<DarkTreeNode> _nodes;
+        private ObservableCollection<DarkTreeNode> _selectedNodes;
+        private DarkTreeNode _anchoredNodeStart;
+        private DarkTreeNode _anchoredNodeEnd;
+        private Bitmap _nodeClosed;
+        private Bitmap _nodeClosedHover;
+        private Bitmap _nodeClosedHoverSelected;
+        private Bitmap _nodeOpen;
+        private Bitmap _nodeOpenHover;
+        private Bitmap _nodeOpenHoverSelected;
+        private DarkTreeNode _provisionalNode;
+        private DarkTreeNode _dropNode;
+        private bool _provisionalDragging;
+        private List<DarkTreeNode> _dragNodes;
+        private Point _dragPos;
 
-        #region Constructor Region
+        public event EventHandler SelectedNodesChanged;
+        public event EventHandler AfterNodeExpand;
+        public event EventHandler AfterNodeCollapse;
 
         public DarkTreeView()
         {
@@ -156,10 +136,6 @@ namespace DarkUI.Controls
 
             LoadIcons();
         }
-
-        #endregion
-
-        #region Dispose Region
 
         protected override void Dispose(bool disposing)
         {
@@ -187,10 +163,6 @@ namespace DarkUI.Controls
 
             base.Dispose(disposing);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         private void Nodes_ItemsAdded(object sender, ObservableListModified<DarkTreeNode> e)
         {
@@ -531,10 +503,6 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
-
-        #region Method Region
-
         private void HookNodeEvents(DarkTreeNode node)
         {
             node.Nodes.ItemsAdded += ChildNodes_ItemsAdded;
@@ -575,7 +543,7 @@ namespace DarkUI.Controls
             var isOdd = false;
             var index = 0;
             DarkTreeNode prevNode = null;
-            
+
             for (var i = 0; i <= Nodes.Count - 1; i++)
             {
                 var node = Nodes[i];
@@ -589,8 +557,7 @@ namespace DarkUI.Controls
             Invalidate();
         }
 
-        private void UpdateNode(DarkTreeNode node, ref DarkTreeNode prevNode, int indent, ref int yOffset,
-                                ref bool isOdd, ref int index)
+        private void UpdateNode(DarkTreeNode node, ref DarkTreeNode prevNode, int indent, ref int yOffset, ref bool isOdd, ref int index)
         {
             UpdateNodeBounds(node, yOffset, indent);
 
@@ -1012,10 +979,6 @@ namespace DarkUI.Controls
             return null;
         }
 
-        #endregion
-
-        #region Drag & Drop Region
-
         protected override void StartDrag()
         {
             if (!AllowMoveNodes)
@@ -1182,14 +1145,12 @@ namespace DarkUI.Controls
         }
 
         protected virtual void MoveNodes(List<DarkTreeNode> dragNodes, DarkTreeNode dropNode)
-        { }
+        {
+        }
 
         protected virtual void NodesMoved(List<DarkTreeNode> nodesMoved)
-        { }
-
-        #endregion
-
-        #region Paint Region
+        {
+        }
 
         protected override void PaintContent(Graphics g)
         {
@@ -1268,7 +1229,5 @@ namespace DarkUI.Controls
                     DrawNode(childNode, g);
             }
         }
-
-        #endregion
     }
 }

@@ -5,8 +5,6 @@ namespace DarkUI.Demo.Forms.Docking
 {
     public partial class DockProperties : DarkToolWindow
     {
-        #region Constructor Region
-
         public DockProperties()
         {
             InitializeComponent();
@@ -21,7 +19,5 @@ namespace DarkUI.Demo.Forms.Docking
 
             cmbList.SelectedItemChanged += delegate { System.Console.WriteLine($"Item changed to {cmbList.SelectedItem.Text}"); };
         }
-
-        #endregion
     }
 }

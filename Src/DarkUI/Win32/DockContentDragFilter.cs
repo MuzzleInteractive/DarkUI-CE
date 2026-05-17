@@ -9,25 +9,15 @@ namespace DarkUI.Win32
 {
     public class DockContentDragFilter : IMessageFilter
     {
-        #region Field Region
-
         private DarkDockPanel _dockPanel;
-
         private DarkDockContent _dragContent;
-
         private DarkTranslucentForm _highlightForm;
-
         private bool _isDragging = false;
         private DarkDockRegion _targetRegion;
         private DarkDockGroup _targetGroup;
         private DockInsertType _insertType = DockInsertType.None;
-
         private Dictionary<DarkDockRegion, DockDropArea> _regionDropAreas = new Dictionary<DarkDockRegion, DockDropArea>();
         private Dictionary<DarkDockGroup, DockDropCollection> _groupDropAreas = new Dictionary<DarkDockGroup, DockDropCollection>();
-
-        #endregion
-
-        #region Constructor Region
 
         public DockContentDragFilter(DarkDockPanel dockPanel)
         {
@@ -35,10 +25,6 @@ namespace DarkUI.Win32
 
             _highlightForm = new DarkTranslucentForm(Colors.BlueSelection);
         }
-
-        #endregion
-
-        #region IMessageFilter Region
 
         public bool PreFilterMessage(ref Message m)
         {
@@ -82,7 +68,7 @@ namespace DarkUI.Win32
                         case DockInsertType.After:
                             _dockPanel.InsertContent(_dragContent, _targetGroup, _insertType);
                             break;
-                    }                        
+                    }
                 }
 
                 StopDrag();
@@ -91,10 +77,6 @@ namespace DarkUI.Win32
 
             return true;
         }
-
-        #endregion
-
-        #region Method Region
 
         public void StartDrag(DarkDockContent content)
         {
@@ -252,7 +234,5 @@ namespace DarkUI.Win32
             // Show we can't drag here
             Cursor.Current = Cursors.No;
         }
-
-        #endregion
     }
 }

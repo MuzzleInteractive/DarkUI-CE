@@ -6,8 +6,6 @@ namespace DarkUI.Controls
 {
     public class DarkToolStrip : ToolStrip
     {
-        #region Constructor Region
-
         public DarkToolStrip()
         {
             Renderer = new DarkToolStripRenderer();
@@ -15,7 +13,5 @@ namespace DarkUI.Controls
             AutoSize = false;
             Size = new Size(1, 28);
         }
-
-        #endregion
     }
 }

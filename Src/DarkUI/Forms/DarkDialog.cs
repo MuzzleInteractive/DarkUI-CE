@@ -7,28 +7,6 @@ namespace DarkUI.Forms
 {
     public partial class DarkDialog : DarkForm
     {
-        #region Field Region
-
-        private DarkDialogButton _dialogButtons = DarkDialogButton.Ok;
-        private List<DarkButton> _buttons;
-
-        #endregion
-
-        #region Button Region
-
-        protected DarkButton btnOk;
-        protected DarkButton btnCancel;
-        protected DarkButton btnClose;
-        protected DarkButton btnYes;
-        protected DarkButton btnNo;
-        protected DarkButton btnAbort;
-        protected DarkButton btnRetry;
-        protected DarkButton btnIgnore;
-
-        #endregion
-
-        #region Property Region
-
         [Description("Determines the type of the dialog window.")]
         [DefaultValue(DarkDialogButton.Ok)]
         public DarkDialogButton DialogButtons
@@ -64,24 +42,28 @@ namespace DarkUI.Forms
             private set { base.CancelButton = value; }
         }
 
-        #endregion
+        protected DarkButton btnOk;
+        protected DarkButton btnCancel;
+        protected DarkButton btnClose;
+        protected DarkButton btnYes;
+        protected DarkButton btnNo;
+        protected DarkButton btnAbort;
+        protected DarkButton btnRetry;
+        protected DarkButton btnIgnore;
 
-        #region Constructor Region
+        private DarkDialogButton _dialogButtons = DarkDialogButton.Ok;
+        private List<DarkButton> _buttons;
 
         public DarkDialog()
         {
             InitializeComponent();
 
             _buttons = new List<DarkButton>
-                {
-                    btnAbort, btnRetry, btnIgnore, btnOk,
-                    btnCancel, btnClose, btnYes, btnNo
-                };
+            {
+                btnAbort, btnRetry, btnIgnore, btnOk,
+                btnCancel, btnClose, btnYes, btnNo
+            };
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnLoad(System.EventArgs e)
         {
@@ -89,10 +71,6 @@ namespace DarkUI.Forms
 
             SetButtons();
         }
-
-        #endregion
-
-        #region Method Region
 
         private void SetButtons()
         {
@@ -170,7 +148,5 @@ namespace DarkUI.Forms
             flowInner.Width = width;
             TotalButtonSize = width;
         }
-
-        #endregion
     }
 }

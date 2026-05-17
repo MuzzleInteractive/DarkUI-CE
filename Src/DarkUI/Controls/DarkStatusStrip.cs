@@ -6,8 +6,6 @@ namespace DarkUI.Controls
 {
     public class DarkStatusStrip : StatusStrip
     {
-        #region Constructor Region
-
         public DarkStatusStrip()
         {
             AutoSize = false;
@@ -17,10 +15,6 @@ namespace DarkUI.Controls
             Size = new Size(Size.Width, 24);
             SizingGrip = false;
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -41,7 +35,5 @@ namespace DarkUI.Controls
                 g.DrawLine(p, ClientRectangle.Left, 1, ClientRectangle.Right, 1);
             }
         }
-
-        #endregion
     }
 }

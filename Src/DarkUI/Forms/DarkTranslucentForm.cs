@@ -5,16 +5,10 @@ namespace DarkUI.Forms
 {
     internal class DarkTranslucentForm : Form
     {
-        #region Property Region
-
         protected override bool ShowWithoutActivation
         {
             get { return true; }
         }
-
-        #endregion
-
-        #region Constructor Region
 
         public DarkTranslucentForm(Color backColor, double opacity = 0.6)
         {
@@ -26,7 +20,5 @@ namespace DarkUI.Forms
             Opacity = opacity;
             BackColor = backColor;
         }
-
-        #endregion
     }
 }

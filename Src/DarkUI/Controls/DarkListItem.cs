@@ -6,20 +6,6 @@ namespace DarkUI.Controls
 {
     public class DarkListItem
     {
-        #region Event Region
-
-        public event EventHandler TextChanged;
-
-        #endregion
-
-        #region Field Region
-
-        private string _text;
-
-        #endregion
-
-        #region Property Region
-
         public string Text
         {
             get { return _text; }
@@ -42,9 +28,9 @@ namespace DarkUI.Controls
 
         public object Tag { get; set; }
 
-        #endregion
+        private string _text;
 
-        #region Constructor Region
+        public event EventHandler TextChanged;
 
         public DarkListItem()
         {
@@ -52,12 +38,9 @@ namespace DarkUI.Controls
             FontStyle = FontStyle.Regular;
         }
 
-        public DarkListItem(string text)
-            : this()
+        public DarkListItem(string text) : this()
         {
             Text = text;
         }
-
-        #endregion
     }
 }

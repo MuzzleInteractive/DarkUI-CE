@@ -8,15 +8,6 @@ namespace DarkUI.Controls
 {
     public class DarkLabel : Label
     {
-        #region Field Region
-
-        private bool _autoUpdateHeight;
-        private bool _isGrowing;
-
-        #endregion
-
-        #region Property Region
-
         [Category("Layout")]
         [Description("Enables automatic height sizing based on the contents of the label.")]
         [DefaultValue(false)]
@@ -48,18 +39,13 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private bool _autoUpdateHeight;
+        private bool _isGrowing;
 
         public DarkLabel()
         {
             ForeColor = Colors.LightText;
         }
-
-        #endregion
-
-        #region Method Region
 
         private void ResizeLabel()
         {
@@ -79,10 +65,6 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
-
-        #region Event Handler Region
-
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
@@ -100,7 +82,5 @@ namespace DarkUI.Controls
             base.OnSizeChanged(e);
             ResizeLabel();
         }
-
-        #endregion
     }
 }

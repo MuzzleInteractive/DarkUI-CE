@@ -1,5 +1,4 @@
-﻿using DarkUI.Config;
-using DarkUI.Controls;
+﻿using DarkUI.Controls;
 using DarkUI.Docking;
 using DarkUI.Forms;
 using System.Drawing;
@@ -9,8 +8,6 @@ namespace DarkUI.Demo.Forms.Docking
 {
     public partial class DockDocument : DarkDocument
     {
-        #region Constructor Region
-
         public DockDocument()
         {
             InitializeComponent();
@@ -27,16 +24,11 @@ namespace DarkUI.Demo.Forms.Docking
             cmbOptions.Items.Add(new DarkDropdownItem("400%"));
         }
 
-        public DockDocument(string text, Image icon)
-            : this()
+        public DockDocument(string text, Image icon) : this()
         {
             DockText = text;
             Icon = icon;
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         public override void Close()
         {
@@ -46,7 +38,5 @@ namespace DarkUI.Demo.Forms.Docking
 
             base.Close();
         }
-
-        #endregion
     }
 }

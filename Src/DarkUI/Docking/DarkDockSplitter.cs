@@ -7,28 +7,16 @@ namespace DarkUI.Docking
 {
     public class DarkDockSplitter
     {
-        #region Field Region
-
-        private Control _parentControl;
-        private Control _control;
-
-        private DarkSplitterType _splitterType;
-
-        private int _minimum;
-        private int _maximum;
-        private DarkTranslucentForm _overlayForm;
-
-        #endregion
-
-        #region Property Region
-
         public Rectangle Bounds { get; set; }
 
         public Cursor ResizeCursor { get; private set; }
 
-        #endregion
-
-        #region Constructor Region
+        private Control _parentControl;
+        private Control _control;
+        private DarkSplitterType _splitterType;
+        private int _minimum;
+        private int _maximum;
+        private DarkTranslucentForm _overlayForm;
 
         public DarkDockSplitter(Control parentControl, Control control, DarkSplitterType splitterType)
         {
@@ -48,10 +36,6 @@ namespace DarkUI.Docking
                     break;
             }
         }
-
-        #endregion
-
-        #region Method Region
 
         public void ShowOverlay()
         {
@@ -154,7 +138,5 @@ namespace DarkUI.Docking
                     break;
             }
         }
-
-        #endregion
     }
 }

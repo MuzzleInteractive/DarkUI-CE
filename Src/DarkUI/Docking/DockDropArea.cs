@@ -4,8 +4,6 @@ namespace DarkUI.Docking
 {
     internal class DockDropArea
     {
-        #region Property Region
-
         internal DarkDockPanel DockPanel { get; private set; }
 
         internal Rectangle DropArea { get; private set; }
@@ -17,10 +15,6 @@ namespace DarkUI.Docking
         internal DarkDockGroup DockGroup { get; private set; }
 
         internal DockInsertType InsertType { get; private set; }
-
-        #endregion
-
-        #region Constructor Region
 
         internal DockDropArea(DarkDockPanel dockPanel, DarkDockRegion region)
         {
@@ -39,10 +33,6 @@ namespace DarkUI.Docking
 
             BuildAreas();
         }
-
-        #endregion
-
-        #region Method Region
 
         internal void BuildAreas()
         {
@@ -198,7 +188,5 @@ namespace DarkUI.Docking
                     break;
             }
         }
-
-        #endregion
     }
 }

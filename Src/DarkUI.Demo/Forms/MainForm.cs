@@ -13,19 +13,12 @@ namespace DarkUI.Demo.Forms
 {
     public partial class MainForm : DarkForm
     {
-        #region Field Region
-
         private List<DarkDockContent> _toolWindows = new List<DarkDockContent>();
-
         private DockProject _dockProject;
         private DockProperties _dockProperties;
         private DockConsole _dockConsole;
         private DockLayers _dockLayers;
         private DockHistory _dockHistory;
-
-        #endregion
-
-        #region Constructor Region
 
         public MainForm()
         {
@@ -83,10 +76,6 @@ namespace DarkUI.Demo.Forms
             DockPanel.AddContent(new DockDocument("Document 3", Icons.document_16xLG));
         }
 
-        #endregion
-
-        #region Method Region
-
         private void HookEvents()
         {
             FormClosing += MainForm_FormClosing;
@@ -126,10 +115,6 @@ namespace DarkUI.Demo.Forms
             mnuLayers.Checked = DockPanel.Contains(_dockLayers);
             mnuHistory.Checked = DockPanel.Contains(_dockHistory);
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -196,10 +181,6 @@ namespace DarkUI.Demo.Forms
             about.ShowDialog();
         }
 
-        #endregion
-
-        #region Serialization Region
-
         private void SerializeDockPanel(string path)
         {
             var state = DockPanel.GetDockPanelState();
@@ -211,7 +192,7 @@ namespace DarkUI.Demo.Forms
             var state = SerializerHelper.Deserialize<DockPanelState>(path);
             DockPanel.RestoreDockPanelState(state, GetContentBySerializationKey);
         }
-         
+
         private DarkDockContent GetContentBySerializationKey(string key)
         {
             foreach (var window in _toolWindows)
@@ -222,7 +203,5 @@ namespace DarkUI.Demo.Forms
 
             return null;
         }
-
-        #endregion
     }
 }

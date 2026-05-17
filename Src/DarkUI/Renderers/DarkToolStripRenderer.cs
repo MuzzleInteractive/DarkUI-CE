@@ -8,8 +8,6 @@ namespace DarkUI.Renderers
 {
     public class DarkToolStripRenderer : DarkMenuRenderer
     {
-        #region Initialisation Region
-
         protected override void InitializeItem(ToolStripItem item)
         {
             base.InitializeItem(item);
@@ -27,10 +25,6 @@ namespace DarkUI.Renderers
                 item.Size = new Size(24, 24);
             }
         }
-
-        #endregion
-
-        #region Render Region
 
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
         {
@@ -192,7 +186,5 @@ namespace DarkUI.Renderers
                 g.DrawImageUnscaled(img, e.Item.Width - 13, e.Item.Height - 9);
             }*/
         }
-
-        #endregion
     }
 }

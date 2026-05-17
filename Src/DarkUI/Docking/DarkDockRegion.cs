@@ -11,17 +11,6 @@ namespace DarkUI.Docking
     [ToolboxItem(false)]
     public class DarkDockRegion : Panel
     {
-        #region Field Region
-
-        private List<DarkDockGroup> _groups;
-
-        private Form _parentForm;
-        private DarkDockSplitter _splitter;
-
-        #endregion
-
-        #region Property Region
-
         public DarkDockPanel DockPanel { get; private set; }
 
         public DarkDockArea DockArea { get; private set; }
@@ -45,9 +34,9 @@ namespace DarkUI.Docking
             }
         }
 
-        #endregion
-
-        #region Constructor Region
+        private List<DarkDockGroup> _groups;
+        private Form _parentForm;
+        private DarkDockSplitter _splitter;
 
         public DarkDockRegion(DarkDockPanel dockPanel, DarkDockArea dockArea)
         {
@@ -58,10 +47,6 @@ namespace DarkUI.Docking
 
             BuildProperties();
         }
-
-        #endregion
-
-        #region Method Region
 
         internal void AddContent(DarkDockContent dockContent)
         {
@@ -139,7 +124,7 @@ namespace DarkUI.Docking
         public List<DarkDockContent> GetContents()
         {
             var result = new List<DarkDockContent>();
-            
+
             foreach (var group in _groups)
                 result.AddRange(group.GetContents());
 
@@ -322,10 +307,6 @@ namespace DarkUI.Docking
                 DockPanel.Splitters.Remove(_splitter);
         }
 
-        #endregion
-
-        #region Event Handler Region
-
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
@@ -354,10 +335,6 @@ namespace DarkUI.Docking
             if (_splitter != null)
                 _splitter.UpdateBounds();
         }
-
-        #endregion
-
-        #region Paint Region
 
         public void Redraw()
         {
@@ -396,7 +373,5 @@ namespace DarkUI.Docking
                     g.DrawLine(p, ClientRectangle.Right - 1, 0, ClientRectangle.Right - 1, ClientRectangle.Height);
             }
         }
-
-        #endregion
     }
 }

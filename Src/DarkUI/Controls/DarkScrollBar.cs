@@ -9,47 +9,6 @@ namespace DarkUI.Controls
 {
     public class DarkScrollBar : Control
     {
-        #region Event Region
-
-        public event EventHandler<ScrollValueEventArgs> ValueChanged;
-
-        #endregion
-
-        #region Field Region
-
-        private DarkScrollOrientation _scrollOrientation;
-
-        private int _value;
-        private int _minimum = 0;
-        private int _maximum = 100;
-
-        private int _viewSize;
-
-        private Rectangle _trackArea;
-        private float _viewContentRatio;
-
-        private Rectangle _thumbArea;
-        private Rectangle _upArrowArea;
-        private Rectangle _downArrowArea;
-
-        private bool _thumbHot;
-        private bool _upArrowHot;
-        private bool _downArrowHot;
-
-        private bool _thumbClicked;
-        private bool _upArrowClicked;
-        private bool _downArrowClicked;
-
-        private bool _isScrolling;
-        private int _initialValue;
-        private Point _initialContact;
-
-        private Timer _scrollTimer;
-
-        #endregion
-
-        #region Property Region
-
         [Category("Behavior")]
         [Description("The orientation type of the scrollbar.")]
         [DefaultValue(DarkScrollOrientation.Vertical)]
@@ -142,9 +101,28 @@ namespace DarkUI.Controls
             }
         }
 
-        #endregion
+        private DarkScrollOrientation _scrollOrientation;
+        private int _value;
+        private int _minimum = 0;
+        private int _maximum = 100;
+        private int _viewSize;
+        private Rectangle _trackArea;
+        private float _viewContentRatio;
+        private Rectangle _thumbArea;
+        private Rectangle _upArrowArea;
+        private Rectangle _downArrowArea;
+        private bool _thumbHot;
+        private bool _upArrowHot;
+        private bool _downArrowHot;
+        private bool _thumbClicked;
+        private bool _upArrowClicked;
+        private bool _downArrowClicked;
+        private bool _isScrolling;
+        private int _initialValue;
+        private Point _initialContact;
+        private Timer _scrollTimer;
 
-        #region Constructor Region
+        public event EventHandler<ScrollValueEventArgs> ValueChanged;
 
         public DarkScrollBar()
         {
@@ -158,10 +136,6 @@ namespace DarkUI.Controls
             _scrollTimer.Interval = 1;
             _scrollTimer.Tick += ScrollTimerTick;
         }
-
-        #endregion
-
-        #region Event Handler Region
 
         protected override void OnResize(EventArgs e)
         {
@@ -348,10 +322,6 @@ namespace DarkUI.Controls
                 ScrollBy(1);
         }
 
-        #endregion
-
-        #region Method Region
-
         public void ScrollTo(int position)
         {
             Value = position;
@@ -420,7 +390,7 @@ namespace DarkUI.Controls
         }
 
         private void UpdateThumb(bool forceRefresh = false)
-        { 
+        {
             if (ViewSize >= Maximum)
                 return;
 
@@ -466,10 +436,6 @@ namespace DarkUI.Controls
                 Update();
             }
         }
-
-        #endregion
-
-        #region Paint Region
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -536,7 +502,5 @@ namespace DarkUI.Controls
                 }
             }
         }
-
-        #endregion
     }
 }

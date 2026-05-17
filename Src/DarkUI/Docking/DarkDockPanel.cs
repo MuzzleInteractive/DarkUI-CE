@@ -10,26 +10,6 @@ namespace DarkUI.Docking
 {
     public class DarkDockPanel : UserControl
     {
-        #region Event Region
-
-        public event EventHandler<DockContentEventArgs> ActiveContentChanged;
-        public event EventHandler<DockContentEventArgs> ContentAdded;
-        public event EventHandler<DockContentEventArgs> ContentRemoved;
-
-        #endregion
-
-        #region Field Region
-
-        private List<DarkDockContent> _contents;
-        private Dictionary<DarkDockArea, DarkDockRegion> _regions;
-
-        private DarkDockContent _activeContent;
-        private bool _switchingContent = false;
-
-        #endregion
-
-        #region Property Region
-
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DarkDockContent ActiveContent
@@ -109,9 +89,14 @@ namespace DarkUI.Docking
             }
         }
 
-        #endregion
+        private List<DarkDockContent> _contents;
+        private Dictionary<DarkDockArea, DarkDockRegion> _regions;
+        private DarkDockContent _activeContent;
+        private bool _switchingContent = false;
 
-        #region Constructor Region
+        public event EventHandler<DockContentEventArgs> ActiveContentChanged;
+        public event EventHandler<DockContentEventArgs> ContentAdded;
+        public event EventHandler<DockContentEventArgs> ContentRemoved;
 
         public DarkDockPanel()
         {
@@ -126,10 +111,6 @@ namespace DarkUI.Docking
 
             CreateRegions();
         }
-
-        #endregion
-
-        #region Method Region
 
         public void AddContent(DarkDockContent dockContent)
         {
@@ -236,10 +217,6 @@ namespace DarkUI.Docking
             DockContentDragFilter.StartDrag(content);
         }
 
-        #endregion
-
-        #region Serialization Region
-
         public DockPanelState GetDockPanelState()
         {
             var state = new DockPanelState();
@@ -328,8 +305,5 @@ namespace DarkUI.Docking
                 }
             }
         }
-
-        #endregion
     }
 }
-    
