@@ -77,6 +77,7 @@ namespace DarkUI.Docking
 
         public DarkDockContent()
         {
+            BackColor = Color.Transparent;
         }
 
         public virtual void Close()

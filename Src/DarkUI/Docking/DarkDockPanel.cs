@@ -97,6 +97,7 @@ namespace DarkUI.Docking
         public event EventHandler<DockContentEventArgs> ActiveContentChanged;
         public event EventHandler<DockContentEventArgs> ContentAdded;
         public event EventHandler<DockContentEventArgs> ContentRemoved;
+        public event EventHandler<DockContentRemovingEventArgs> ContentRemoving;
 
         public DarkDockPanel()
         {
@@ -107,7 +108,7 @@ namespace DarkUI.Docking
             _regions = new Dictionary<DarkDockArea, DarkDockRegion>();
             _contents = new List<DarkDockContent>();
 
-            BackColor = Colors.GreyBackground;
+            BackColor = ThemeProvider.CurrentTheme.GreyBackground;
 
             CreateRegions();
         }
@@ -164,6 +165,13 @@ namespace DarkUI.Docking
             if (!_contents.Contains(dockContent))
                 return;
 
+            DockContentRemovingEventArgs args = new DockContentRemovingEventArgs(dockContent, false);
+
+            ContentRemoving?.Invoke(this, args);
+
+            if (args.Cancel)
+                return;
+
             dockContent.DockPanel = null;
             _contents.Remove(dockContent);
 
@@ -177,6 +185,23 @@ namespace DarkUI.Docking
         public bool ContainsContent(DarkDockContent dockContent)
         {
             return _contents.Contains(dockContent);
+        }
+
+        public List<DarkDockContent> GetContents(DarkDockArea Area)
+        {
+            return _regions[Area].GetContents();
+        }
+
+        public List<DarkDockContent> GetAllContents()
+        {
+            List<DarkDockContent> contents = new List<DarkDockContent>();
+
+            contents.AddRange(_regions[DarkDockArea.Document].GetContents());
+            contents.AddRange(_regions[DarkDockArea.Left].GetContents());
+            contents.AddRange(_regions[DarkDockArea.Right].GetContents());
+            contents.AddRange(_regions[DarkDockArea.Bottom].GetContents());
+
+            return contents;
         }
 
         public List<DarkDockContent> GetDocuments()

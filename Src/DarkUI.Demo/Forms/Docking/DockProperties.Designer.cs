@@ -54,6 +54,7 @@ namespace DarkUI.Demo.Forms.Docking
             // 
             // pnlMain
             // 
+            this.pnlMain.BackColor = System.Drawing.Color.Transparent;
             this.pnlMain.Controls.Add(this.panel3);
             this.pnlMain.Controls.Add(this.panel1);
             this.pnlMain.Controls.Add(this.panel2);
@@ -224,6 +225,7 @@ namespace DarkUI.Demo.Forms.Docking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.darkScrollBar1);
             this.DefaultDockArea = DarkUI.Docking.DarkDockArea.Right;

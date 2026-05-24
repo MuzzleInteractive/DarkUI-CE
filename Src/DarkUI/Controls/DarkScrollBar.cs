@@ -30,10 +30,13 @@ namespace DarkUI.Controls
             get { return _value; }
             set
             {
+                var maximumValue = Maximum - ViewSize;
+                if (maximumValue < Minimum)
+                    maximumValue = Minimum;
+
                 if (value < Minimum)
                     value = Minimum;
 
-                var maximumValue = Maximum - ViewSize;
                 if (value > maximumValue)
                     value = maximumValue;
 
@@ -88,6 +91,8 @@ namespace DarkUI.Controls
             }
         }
 
+        [Category("Behavior")]
+        [Description("Determines whether the control is visible or hidden.")]
         [DefaultValue(true)]
         public new bool Visible
         {
@@ -348,13 +353,7 @@ namespace DarkUI.Controls
 
         public void ScrollByPhysical(int offsetInPixels)
         {
-            var isVert = _scrollOrientation == DarkScrollOrientation.Vertical;
-
-            var thumbPos = isVert ? (_thumbArea.Top - _trackArea.Top) : (_thumbArea.Left - _trackArea.Left);
-
-            var newPosition = thumbPos - offsetInPixels;
-
-            ScrollToPhysical(newPosition);
+            Value = _value + offsetInPixels;
         }
 
         public void UpdateScrollBar()
@@ -441,11 +440,8 @@ namespace DarkUI.Controls
         {
             var g = e.Graphics;
 
-            // DEBUG: Scrollbar bg
-            /*using (var b = new SolidBrush(Colors.MediumBackground))
-            {
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
                 g.FillRectangle(b, ClientRectangle);
-            }*/
 
             // DEBUG: Arrow backgrounds
             /*using (var b = new SolidBrush(Color.White))
@@ -491,10 +487,10 @@ namespace DarkUI.Controls
             // Draw thumb
             if (Enabled)
             {
-                var scrollColor = _thumbHot ? Colors.GreyHighlight : Colors.GreySelection;
+                var scrollColor = _thumbHot ? ThemeProvider.CurrentTheme.GreyHighlight : ThemeProvider.CurrentTheme.GreySelection;
 
                 if (_isScrolling)
-                    scrollColor = Colors.ActiveControl;
+                    scrollColor = ThemeProvider.CurrentTheme.ActiveControl;
 
                 using (var b = new SolidBrush(scrollColor))
                 {

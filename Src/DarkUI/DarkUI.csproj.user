@@ -32,6 +32,9 @@
     <Compile Update="Controls\DarkNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\DarkPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\DarkRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -95,5 +98,10 @@
     <Compile Update="Forms\DarkTranslucentForm.cs">
       <SubType>Form</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\DarkUIIcons.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

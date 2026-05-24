@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using DarkUI.Config;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DarkUI.Controls
@@ -19,7 +20,7 @@ namespace DarkUI.Controls
             var g = e.Graphics;
 
             // Draw background
-            using (var b = new SolidBrush(BackColor))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, ClientRectangle);
             }
@@ -34,7 +35,7 @@ namespace DarkUI.Controls
             // Draw the bit where the scrollbars meet
             if (_vScrollBar.Visible && _hScrollBar.Visible)
             {
-                using (var b = new SolidBrush(BackColor))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
                 {
                     var rect = new Rectangle(_hScrollBar.Right, _vScrollBar.Bottom, _vScrollBar.Width,
                                              _hScrollBar.Height);

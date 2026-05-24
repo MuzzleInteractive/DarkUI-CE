@@ -352,13 +352,13 @@ namespace DarkUI.Docking
                 return;
 
             // Fill body
-            using (var b = new SolidBrush(Colors.GreyBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, ClientRectangle);
             }
 
             // Draw border
-            using (var p = new Pen(Colors.DarkBorder))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
             {
                 // Top border
                 if (DockArea == DarkDockArea.Document)

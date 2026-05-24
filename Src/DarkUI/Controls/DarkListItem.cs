@@ -1,5 +1,4 @@
-﻿using DarkUI.Config;
-using System;
+﻿using System;
 using System.Drawing;
 
 namespace DarkUI.Controls
@@ -34,7 +33,7 @@ namespace DarkUI.Controls
 
         public DarkListItem()
         {
-            TextColor = Colors.LightText;
+            //TextColor = ThemeProvider.CurrentTheme.LightText;
             FontStyle = FontStyle.Regular;
         }
 

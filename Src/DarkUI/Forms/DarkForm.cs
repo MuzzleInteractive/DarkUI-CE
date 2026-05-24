@@ -1,10 +1,13 @@
 ﻿using DarkUI.Config;
+using DarkUI.Extensions;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace DarkUI.Forms
 {
+    [DefaultEvent("Shown")]
     public class DarkForm : Form
     {
         [Category("Appearance")]
@@ -24,7 +27,17 @@ namespace DarkUI.Forms
 
         public DarkForm()
         {
-            BackColor = Colors.GreyBackground;
+            BackColor = ThemeProvider.CurrentTheme.GreyBackground;
+            Font = new Font("Segoe UI", 9);
+            StartPosition = FormStartPosition.CenterScreen;
+            AutoScaleMode = AutoScaleMode.Dpi;
+            this.EnableDoubleBufferFlagRecursive(true);
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            ThemeProvider.ApplyTheme(this);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -36,7 +49,7 @@ namespace DarkUI.Forms
 
             var g = e.Graphics;
 
-            using (var p = new Pen(Colors.DarkBorder))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
             {
                 var modRect = new Rectangle(ClientRectangle.Location, new Size(ClientRectangle.Width - 1, ClientRectangle.Height - 1));
                 g.DrawRectangle(p, modRect);

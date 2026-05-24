@@ -145,6 +145,8 @@ namespace DarkUI.Controls
 
         private void ShowMenu()
         {
+            _menu.BackColor = ThemeProvider.CurrentTheme.GreyBackground;
+
             if (_menu.Visible)
                 return;
 
@@ -254,12 +256,12 @@ namespace DarkUI.Controls
             {
                 if ((DarkDropdownItem)item.Tag == SelectedItem)
                 {
-                    item.BackColor = Colors.DarkBlueBackground;
+                    item.BackColor = ThemeProvider.CurrentTheme.DarkAccentBackground;
                     item.Font = new Font(Font, FontStyle.Bold);
                 }
                 else
                 {
-                    item.BackColor = Colors.GreyBackground;
+                    item.BackColor = ThemeProvider.CurrentTheme.GreyBackground;
                     item.Font = new Font(Font, FontStyle.Regular);
                 }
             }
@@ -364,7 +366,7 @@ namespace DarkUI.Controls
             var g = e.Graphics;
 
             // Draw background
-            using (var b = new SolidBrush(Colors.MediumBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.MediumBackground))
             {
                 g.FillRectangle(b, ClientRectangle);
             }
@@ -374,7 +376,7 @@ namespace DarkUI.Controls
             {
                 if (ShowBorder)
                 {
-                    using (var p = new Pen(Colors.LightBorder, 1))
+                    using (var p = new Pen(ThemeProvider.CurrentTheme.LightBorder, 1))
                     {
                         var modRect = new Rectangle(ClientRectangle.Left, ClientRectangle.Top, ClientRectangle.Width - 1, ClientRectangle.Height - 1);
                         g.DrawRectangle(p, modRect);
@@ -385,18 +387,18 @@ namespace DarkUI.Controls
             // Draw hover state
             if (ControlState == DarkControlState.Hover)
             {
-                using (var b = new SolidBrush(Colors.DarkBorder))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.DarkBorder))
                 {
                     g.FillRectangle(b, ClientRectangle);
                 }
 
-                using (var b = new SolidBrush(Colors.DarkBackground))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.DarkBackground))
                 {
                     var arrowRect = new Rectangle(ClientRectangle.Right - DarkUIIcons.small_arrow.Width - 8, ClientRectangle.Top, DarkUIIcons.small_arrow.Width + 8, ClientRectangle.Height);
                     g.FillRectangle(b, arrowRect);
                 }
 
-                using (var p = new Pen(Colors.BlueSelection, 1))
+                using (var p = new Pen(ThemeProvider.CurrentTheme.AccentSelection, 1))
                 {
                     var modRect = new Rectangle(ClientRectangle.Left, ClientRectangle.Top, ClientRectangle.Width - 1 - DarkUIIcons.small_arrow.Width - 8, ClientRectangle.Height - 1);
                     g.DrawRectangle(p, modRect);
@@ -406,12 +408,12 @@ namespace DarkUI.Controls
             // Draw pressed state
             if (ControlState == DarkControlState.Pressed)
             {
-                using (var b = new SolidBrush(Colors.DarkBorder))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.DarkBorder))
                 {
                     g.FillRectangle(b, ClientRectangle);
                 }
 
-                using (var b = new SolidBrush(Colors.BlueSelection))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.AccentSelection))
                 {
                     var arrowRect = new Rectangle(ClientRectangle.Right - DarkUIIcons.small_arrow.Width - 8, ClientRectangle.Top, DarkUIIcons.small_arrow.Width + 8, ClientRectangle.Height);
                     g.FillRectangle(b, arrowRect);
@@ -436,7 +438,7 @@ namespace DarkUI.Controls
                 }
 
                 // Draw Text
-                using (var b = new SolidBrush(Colors.LightText))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.LightText))
                 {
                     var stringFormat = new StringFormat
                     {

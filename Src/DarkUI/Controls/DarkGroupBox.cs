@@ -10,7 +10,7 @@ namespace DarkUI.Controls
     {
         [Category("Appearance")]
         [Description("Determines the color of the border.")]
-        [DefaultValue(typeof(Color), "51, 51, 51")] // /!\ Need to change this later
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color BorderColor
         {
             get { return _borderColor; }
@@ -21,7 +21,7 @@ namespace DarkUI.Controls
             }
         }
 
-        private Color _borderColor = Colors.DarkBorder;
+        private Color _borderColor = ThemeProvider.CurrentTheme.DarkBorder;
 
         public DarkGroupBox()
         {
@@ -39,8 +39,8 @@ namespace DarkUI.Controls
             var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
             var stringSize = g.MeasureString(Text, Font);
 
-            var textColor = Colors.LightText;
-            var fillColor = Colors.GreyBackground;
+            var textColor = ThemeProvider.CurrentTheme.LightText;
+            var fillColor = ThemeProvider.CurrentTheme.GreyBackground;
 
             using (var b = new SolidBrush(fillColor))
             {

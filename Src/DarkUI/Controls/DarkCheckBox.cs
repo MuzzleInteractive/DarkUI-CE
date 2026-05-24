@@ -259,37 +259,37 @@ namespace DarkUI.Controls
 
             var size = Consts.CheckBoxSize;
 
-            var textColor = Colors.LightText;
-            var borderColor = Colors.LightText;
-            var fillColor = Colors.LightestBackground;
+            var textColor = ThemeProvider.CurrentTheme.LightText;
+            var borderColor = ThemeProvider.CurrentTheme.LightText;
+            var fillColor = Checked ? ThemeProvider.CurrentTheme.AccentSelection : ThemeProvider.CurrentTheme.LightestBackground;
 
             if (Enabled)
             {
                 if (Focused)
                 {
-                    borderColor = Colors.BlueHighlight;
-                    fillColor = Colors.BlueSelection;
+                    borderColor = ThemeProvider.CurrentTheme.AccentHighlight;
+                    fillColor = ThemeProvider.CurrentTheme.AccentSelection;
                 }
 
                 if (_controlState == DarkControlState.Hover)
                 {
-                    borderColor = Colors.BlueHighlight;
-                    fillColor = Colors.BlueSelection;
+                    borderColor = ThemeProvider.CurrentTheme.AccentHighlight;
+                    fillColor = ThemeProvider.CurrentTheme.AccentSelection;
                 }
                 else if (_controlState == DarkControlState.Pressed)
                 {
-                    borderColor = Colors.GreyHighlight;
-                    fillColor = Colors.GreySelection;
+                    borderColor = ThemeProvider.CurrentTheme.GreyHighlight;
+                    fillColor = ThemeProvider.CurrentTheme.GreySelection;
                 }
             }
             else
             {
-                textColor = Colors.DisabledText;
-                borderColor = Colors.GreyHighlight;
-                fillColor = Colors.GreySelection;
+                textColor = ThemeProvider.CurrentTheme.DisabledText;
+                borderColor = ThemeProvider.CurrentTheme.GreyHighlight;
+                fillColor = ThemeProvider.CurrentTheme.GreySelection;
             }
 
-            using (var b = new SolidBrush(Colors.GreyBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, rect);
             }

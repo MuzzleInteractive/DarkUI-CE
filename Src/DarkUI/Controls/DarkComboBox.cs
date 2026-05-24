@@ -89,6 +89,19 @@ namespace DarkUI.Controls
             Invalidate();
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            Invalidate();
+        }
+
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            base.OnEnabledChanged(e);
+            _buffer = null;
+            Invalidate();
+        }
+
         protected override void OnInvalidated(InvalidateEventArgs e)
         {
             base.OnInvalidated(e);
@@ -111,12 +124,12 @@ namespace DarkUI.Controls
             {
                 var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
 
-                var textColor = Colors.LightText;
-                var borderColor = Colors.GreySelection;
-                var fillColor = Colors.LightBackground;
+                var textColor = Enabled ? ThemeProvider.CurrentTheme.LightText : ThemeProvider.CurrentTheme.DisabledText;
+                var borderColor = ThemeProvider.CurrentTheme.GreySelection;
+                var fillColor = ThemeProvider.CurrentTheme.LightBackground;
 
                 if (Focused && TabStop)
-                    borderColor = Colors.BlueHighlight;
+                    borderColor = ThemeProvider.CurrentTheme.AccentHighlight;
 
                 using (var b = new SolidBrush(fillColor))
                 {
@@ -172,13 +185,12 @@ namespace DarkUI.Controls
             var g = e.Graphics;
             var rect = e.Bounds;
 
-            var textColor = Colors.LightText;
-            var fillColor = Colors.LightBackground;
+            var textColor = ThemeProvider.CurrentTheme.LightText;
+            var fillColor = ThemeProvider.CurrentTheme.LightBackground;
 
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected ||
-                (e.State & DrawItemState.Focus) == DrawItemState.Focus ||
-                (e.State & DrawItemState.NoFocusRect) != DrawItemState.NoFocusRect)
-                fillColor = Colors.BlueSelection;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected
+                || (e.State & DrawItemState.Focus) == DrawItemState.Focus)
+                fillColor = ThemeProvider.CurrentTheme.AccentSelection;
 
             using (var b = new SolidBrush(fillColor))
             {

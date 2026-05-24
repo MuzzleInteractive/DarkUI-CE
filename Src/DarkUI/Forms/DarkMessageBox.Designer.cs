@@ -45,7 +45,6 @@ namespace DarkUI.Forms
             // 
             // lblText
             // 
-            this.lblText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.lblText.Location = new System.Drawing.Point(50, 9);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(185, 15);

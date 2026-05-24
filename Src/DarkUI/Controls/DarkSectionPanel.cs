@@ -66,15 +66,15 @@ namespace DarkUI.Controls
             var rect = ClientRectangle;
 
             // Fill body
-            using (var b = new SolidBrush(Colors.GreyBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, rect);
             }
 
             // Draw header
-            var bgColor = ContainsFocus ? Colors.BlueBackground : Colors.HeaderBackground;
-            var darkColor = ContainsFocus ? Colors.DarkBlueBorder : Colors.DarkBorder;
-            var lightColor = ContainsFocus ? Colors.LightBlueBorder : Colors.LightBorder;
+            var bgColor = ContainsFocus ? ThemeProvider.CurrentTheme.AccentBackground : ThemeProvider.CurrentTheme.HeaderBackground;
+            var darkColor = ContainsFocus ? ThemeProvider.CurrentTheme.DarkAccentBorder : ThemeProvider.CurrentTheme.DarkBorder;
+            var lightColor = ContainsFocus ? ThemeProvider.CurrentTheme.LightAccentBorder : ThemeProvider.CurrentTheme.LightBorder;
 
             using (var b = new SolidBrush(bgColor))
             {
@@ -95,7 +95,7 @@ namespace DarkUI.Controls
 
             var xOffset = 3;
 
-            using (var b = new SolidBrush(Colors.LightText))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.LightText))
             {
                 var textRect = new Rectangle(xOffset, 0, rect.Width - 4 - xOffset, 25);
 
@@ -111,7 +111,7 @@ namespace DarkUI.Controls
             }
 
             // Draw border
-            using (var p = new Pen(Colors.DarkBorder, 1))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder, 1))
             {
                 var modRect = new Rectangle(rect.Left, rect.Top, rect.Width - 1, rect.Height - 1);
 

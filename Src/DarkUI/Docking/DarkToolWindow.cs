@@ -29,7 +29,7 @@ namespace DarkUI.Docking
                      ControlStyles.ResizeRedraw |
                      ControlStyles.UserPaint, true);
 
-            BackColor = Colors.GreyBackground;
+            //BackColor = ThemeProvider.CurrentTheme.GreyBackground;
             base.Padding = new Padding(0, Consts.ToolWindowHeaderSize, 0, 0);
 
             UpdateCloseButton();
@@ -136,7 +136,7 @@ namespace DarkUI.Docking
             var g = e.Graphics;
 
             // Fill body
-            using (var b = new SolidBrush(Colors.GreyBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, ClientRectangle);
             }
@@ -144,9 +144,9 @@ namespace DarkUI.Docking
             var isActive = IsActive();
 
             // Draw header
-            var bgColor = isActive ? Colors.BlueBackground : Colors.HeaderBackground;
-            var darkColor = isActive ? Colors.DarkBlueBorder : Colors.DarkBorder;
-            var lightColor = isActive ? Colors.LightBlueBorder : Colors.LightBorder;
+            var bgColor = isActive ? ThemeProvider.CurrentTheme.AccentBackground : ThemeProvider.CurrentTheme.HeaderBackground;
+            var darkColor = isActive ? ThemeProvider.CurrentTheme.DarkAccentBorder : ThemeProvider.CurrentTheme.DarkBorder;
+            var lightColor = isActive ? ThemeProvider.CurrentTheme.LightAccentBorder : ThemeProvider.CurrentTheme.LightBorder;
 
             using (var b = new SolidBrush(bgColor))
             {
@@ -175,7 +175,7 @@ namespace DarkUI.Docking
             }
 
             // Draw text
-            using (var b = new SolidBrush(Colors.LightText))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.LightText))
             {
                 var textRect = new Rectangle(xOffset, 0, ClientRectangle.Width - 4 - xOffset, Consts.ToolWindowHeaderSize);
 

@@ -1,4 +1,5 @@
-﻿using DarkUI.Demo.Forms.Dialogs;
+﻿using DarkUI.Config;
+using DarkUI.Demo.Forms.Dialogs;
 using DarkUI.Demo.Forms.Docking;
 using DarkUI.Demo.Helpers;
 using DarkUI.Docking;
@@ -203,6 +204,18 @@ namespace DarkUI.Demo.Forms
             }
 
             return null;
+        }
+
+        private void mnuLightTheme_Click(object sender, EventArgs e)
+        {
+            ThemeProvider.CurrentTheme = new LightTheme();
+            ThemeProvider.ApplyTheme();
+        }
+
+        private void mnuDarkTheme_Click(object sender, EventArgs e)
+        {
+            ThemeProvider.CurrentTheme = new DarkTheme();
+            ThemeProvider.ApplyTheme();
         }
     }
 }

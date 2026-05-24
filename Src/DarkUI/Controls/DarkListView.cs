@@ -489,10 +489,10 @@ namespace DarkUI.Controls
 
                 // Background
                 var odd = i % 2 != 0;
-                var bgColor = !odd ? Colors.HeaderBackground : Colors.GreyBackground;
+                var bgColor = !odd ? ThemeProvider.CurrentTheme.HeaderBackground : ThemeProvider.CurrentTheme.GreyBackground;
 
                 if (SelectedIndices.Count > 0 && SelectedIndices.Contains(i))
-                    bgColor = Focused ? Colors.BlueSelection : Colors.GreySelection;
+                    bgColor = Focused ? ThemeProvider.CurrentTheme.AccentSelection : ThemeProvider.CurrentTheme.GreySelection;
 
                 using (var b = new SolidBrush(bgColor))
                 {
@@ -500,7 +500,7 @@ namespace DarkUI.Controls
                 }
 
                 // DEBUG: Border
-                /*using (var p = new Pen(Colors.DarkBorder))
+                /*using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
                 {
                     g.DrawLine(p, new Point(rect.Left, rect.Bottom - 1), new Point(rect.Right, rect.Bottom - 1));
                 }*/
@@ -512,7 +512,8 @@ namespace DarkUI.Controls
                 }
 
                 // Text
-                using (var b = new SolidBrush(Items[i].TextColor))
+                //using (var b = new SolidBrush(Items[i].TextColor))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.LightText))
                 {
                     var stringFormat = new StringFormat
                     {

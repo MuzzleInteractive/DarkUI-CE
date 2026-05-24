@@ -34,7 +34,7 @@ namespace DarkUI.Renderers
 
             if (e.ToolStrip.GetType() == typeof(ToolStripOverflow))
             {
-                using (var p = new Pen(Colors.GreyBackground))
+                using (var p = new Pen(ThemeProvider.CurrentTheme.GreyBackground))
                 {
                     var rect = new Rectangle(e.AffectedBounds.Left, e.AffectedBounds.Top, e.AffectedBounds.Width - 1, e.AffectedBounds.Height - 1);
                     g.DrawRectangle(p, rect);
@@ -56,7 +56,7 @@ namespace DarkUI.Renderers
 
             if (e.Item.Selected || e.Item.Pressed)
             {
-                using (var b = new SolidBrush(Colors.GreySelection))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreySelection))
                 {
                     g.FillRectangle(b, rect);
                 }
@@ -68,7 +68,7 @@ namespace DarkUI.Renderers
 
                 if (castItem.Checked)
                 {
-                    using (var b = new SolidBrush(Colors.GreySelection))
+                    using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreySelection))
                     {
                         g.FillRectangle(b, rect);
                     }
@@ -77,7 +77,7 @@ namespace DarkUI.Renderers
                 if (castItem.Checked && castItem.Selected)
                 {
                     var modRect = new Rectangle(rect.Left, rect.Top, rect.Width - 1, rect.Height - 1);
-                    using (var p = new Pen(Colors.GreyHighlight))
+                    using (var p = new Pen(ThemeProvider.CurrentTheme.GreyHighlight))
                     {
                         g.DrawRectangle(p, modRect);
                     }
@@ -93,7 +93,7 @@ namespace DarkUI.Renderers
 
             if (e.Item.Selected || e.Item.Pressed)
             {
-                using (var b = new SolidBrush(Colors.GreySelection))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreySelection))
                 {
                     g.FillRectangle(b, rect);
                 }
@@ -107,7 +107,7 @@ namespace DarkUI.Renderers
 
             var g = e.Graphics;
 
-            using (var img = DarkUIIcons.grip.SetColor(Colors.LightBorder))
+            using (var img = DarkUIIcons.grip.SetColor(ThemeProvider.CurrentTheme.LightBorder))
             {
                 g.DrawImageUnscaled(img, new Point(e.AffectedBounds.Left, e.AffectedBounds.Top));
             }
@@ -126,12 +126,12 @@ namespace DarkUI.Renderers
 
             var rect = new Rectangle(3, 3, 2, e.Item.Height - 4);
 
-            using (var p = new Pen(Colors.DarkBorder))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
             {
                 g.DrawLine(p, rect.Left, rect.Top, rect.Left, rect.Height);
             }
 
-            using (var p = new Pen(Colors.LightBorder))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.LightBorder))
             {
                 g.DrawLine(p, rect.Left + 1, rect.Top, rect.Left + 1, rect.Height);
             }
@@ -185,6 +185,12 @@ namespace DarkUI.Renderers
             {
                 g.DrawImageUnscaled(img, e.Item.Width - 13, e.Item.Height - 9);
             }*/
+        }
+
+        protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+        {
+            e.TextColor = ThemeProvider.CurrentTheme.LightText;
+            base.OnRenderItemText(e);
         }
     }
 }

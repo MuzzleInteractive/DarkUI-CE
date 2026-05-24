@@ -1194,6 +1194,21 @@ namespace DarkUI.Win32
         /// <summary>
         /// A top-level window is being replaced. The window exists when the system calls this hook.
         /// </summary>
-        HSHELL_WINDOWREPLACED = 13
+        HSHELL_WINDOWREPLACED = 13,
+
+        /// <summary>
+        /// Used to set a TextBox placeholder text.
+        /// </summary>
+        EM_SETCUEBANNER = 0x1501,
+
+        /// <summary>
+        /// To set a window to use the dark mode title/header.
+        /// </summary>
+        DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19,
+
+        /// <summary>
+        /// To set a window to use the dark mode title/header.
+        /// </summary>
+        DWMWA_USE_IMMERSIVE_DARK_MODE = 20
     }
 }

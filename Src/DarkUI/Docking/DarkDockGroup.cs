@@ -607,7 +607,7 @@ namespace DarkUI.Docking
         {
             var g = e.Graphics;
 
-            using (var b = new SolidBrush(Colors.GreyBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
             {
                 g.FillRectangle(b, ClientRectangle);
             }
@@ -615,7 +615,7 @@ namespace DarkUI.Docking
             if (!_tabArea.Visible)
                 return;
 
-            using (var b = new SolidBrush(Colors.MediumBackground))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.MediumBackground))
             {
                 g.FillRectangle(b, _tabArea.ClientRectangle);
             }
@@ -632,7 +632,7 @@ namespace DarkUI.Docking
             {
                 // Color divider
                 var isActiveGroup = DockPanel.ActiveGroup == this;
-                var divColor = isActiveGroup ? Colors.BlueSelection : Colors.GreySelection;
+                var divColor = isActiveGroup ? ThemeProvider.CurrentTheme.AccentSelection : ThemeProvider.CurrentTheme.GreySelection;
                 using (var b = new SolidBrush(divColor))
                 {
                     var divRect = new Rectangle(_tabArea.ClientRectangle.Left, _tabArea.ClientRectangle.Bottom - 2, _tabArea.ClientRectangle.Width, 2);
@@ -642,7 +642,7 @@ namespace DarkUI.Docking
                 // Content dropdown list
                 var dropdownRect = new Rectangle(_tabArea.DropdownRectangle.Left, _tabArea.DropdownRectangle.Top, _tabArea.DropdownRectangle.Width, _tabArea.DropdownRectangle.Height - 2);
 
-                using (var b = new SolidBrush(Colors.MediumBackground))
+                using (var b = new SolidBrush(ThemeProvider.CurrentTheme.MediumBackground))
                 {
                     g.FillRectangle(b, dropdownRect);
                 }
@@ -661,13 +661,13 @@ namespace DarkUI.Docking
             var isVisibleTab = VisibleContent == tab.DockContent;
             var isActiveGroup = DockPanel.ActiveGroup == this;
 
-            var bgColor = isVisibleTab ? Colors.BlueSelection : Colors.DarkBackground;
+            var bgColor = isVisibleTab ? ThemeProvider.CurrentTheme.AccentSelection : ThemeProvider.CurrentTheme.DarkBackground;
 
             if (!isActiveGroup)
-                bgColor = isVisibleTab ? Colors.GreySelection : Colors.DarkBackground;
+                bgColor = isVisibleTab ? ThemeProvider.CurrentTheme.GreySelection : ThemeProvider.CurrentTheme.DarkBackground;
 
             if (tab.Hot && !isVisibleTab)
-                bgColor = Colors.MediumBackground;
+                bgColor = ThemeProvider.CurrentTheme.MediumBackground;
 
             using (var b = new SolidBrush(bgColor))
             {
@@ -677,7 +677,7 @@ namespace DarkUI.Docking
             // Draw separators
             if (tab.ShowSeparator)
             {
-                using (var p = new Pen(Colors.DarkBorder))
+                using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
                 {
                     g.DrawLine(p, tabRect.Right - 1, tabRect.Top, tabRect.Right - 1, tabRect.Bottom);
                 }
@@ -701,7 +701,7 @@ namespace DarkUI.Docking
             };
 
             // Draw text
-            var textColor = isVisibleTab ? Colors.LightText : Colors.DisabledText;
+            var textColor = isVisibleTab ? ThemeProvider.CurrentTheme.LightText : ThemeProvider.CurrentTheme.DisabledText;
             using (var b = new SolidBrush(textColor))
             {
                 var textRect = new Rectangle(tabRect.Left + 5 + xOffset, tabRect.Top, tabRect.Width - tab.CloseButtonRectangle.Width - 7 - 5 - xOffset, tabRect.Height);
@@ -729,10 +729,10 @@ namespace DarkUI.Docking
 
             var isVisibleTab = VisibleContent == tab.DockContent;
 
-            var bgColor = isVisibleTab ? Colors.GreyBackground : Colors.DarkBackground;
+            var bgColor = isVisibleTab ? ThemeProvider.CurrentTheme.GreyBackground : ThemeProvider.CurrentTheme.DarkBackground;
 
             if (tab.Hot && !isVisibleTab)
-                bgColor = Colors.MediumBackground;
+                bgColor = ThemeProvider.CurrentTheme.MediumBackground;
 
             using (var b = new SolidBrush(bgColor))
             {
@@ -742,7 +742,7 @@ namespace DarkUI.Docking
             // Draw separators
             if (tab.ShowSeparator)
             {
-                using (var p = new Pen(Colors.DarkBorder))
+                using (var p = new Pen(ThemeProvider.CurrentTheme.DarkBorder))
                 {
                     g.DrawLine(p, tabRect.Right - 1, tabRect.Top, tabRect.Right - 1, tabRect.Bottom);
                 }
@@ -756,7 +756,7 @@ namespace DarkUI.Docking
                 Trimming = StringTrimming.EllipsisCharacter
             };
 
-            var textColor = isVisibleTab ? Colors.BlueHighlight : Colors.DisabledText;
+            var textColor = isVisibleTab ? ThemeProvider.CurrentTheme.AccentHighlight : ThemeProvider.CurrentTheme.DisabledText;
             using (var b = new SolidBrush(textColor))
             {
                 var textRect = new Rectangle(tabRect.Left + 5, tabRect.Top, tabRect.Width - 5, tabRect.Height);

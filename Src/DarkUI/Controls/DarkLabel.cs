@@ -26,6 +26,8 @@ namespace DarkUI.Controls
             }
         }
 
+        [Category("Layout")]
+        [Description("Enables automatic resizing based on font size. Note that this is only valid for label controls that do not wrap text.")]
         [DefaultValue(true)]
         public new bool AutoSize
         {
@@ -39,12 +41,23 @@ namespace DarkUI.Controls
             }
         }
 
+        [Category("Behavior")]
+        [Description("Indicates whether the user can use the TAB key to give focus to the control.")]
+        [DefaultValue(false)]
+        [Browsable(true)]
+        public new bool TabStop
+        {
+            get => base.TabStop;
+            set => base.TabStop = value;
+        }
+
         private bool _autoUpdateHeight;
         private bool _isGrowing;
 
         public DarkLabel()
         {
-            ForeColor = Colors.LightText;
+            SetStyle(ControlStyles.Selectable, true);
+            ForeColor = ThemeProvider.CurrentTheme.LightText;
         }
 
         private void ResizeLabel()

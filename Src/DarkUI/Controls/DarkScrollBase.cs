@@ -74,6 +74,14 @@ namespace DarkUI.Controls
             }
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int MouseScrollPixelStep { get; set; } = 20;
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool MouseScrollHorizontalIfVerticalNotAvailable { get; set; } = true;
+
         protected readonly DarkScrollBar _vScrollBar;
         protected readonly DarkScrollBar _hScrollBar;
         private Size _visibleSize;
@@ -292,22 +300,22 @@ namespace DarkUI.Controls
             if (_hScrollBar.Visible && ModifierKeys == Keys.Control)
                 horizontal = true;
 
-            if (_hScrollBar.Visible && !_vScrollBar.Visible)
+            if (_hScrollBar.Visible && !_vScrollBar.Visible && MouseScrollHorizontalIfVerticalNotAvailable)
                 horizontal = true;
 
             if (!horizontal)
             {
                 if (e.Delta > 0)
-                    _vScrollBar.ScrollByPhysical(3);
+                    _vScrollBar.ScrollByPhysical(-MouseScrollPixelStep);
                 else if (e.Delta < 0)
-                    _vScrollBar.ScrollByPhysical(-3);
+                    _vScrollBar.ScrollByPhysical(MouseScrollPixelStep);
             }
             else
             {
                 if (e.Delta > 0)
-                    _hScrollBar.ScrollByPhysical(3);
+                    _hScrollBar.ScrollByPhysical(-MouseScrollPixelStep);
                 else if (e.Delta < 0)
-                    _hScrollBar.ScrollByPhysical(-3);
+                    _hScrollBar.ScrollByPhysical(MouseScrollPixelStep);
             }
         }
 

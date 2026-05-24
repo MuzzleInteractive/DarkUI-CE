@@ -15,14 +15,17 @@ namespace DarkUI.Controls
             var g = e.Graphics;
             var rect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
 
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.GreyBackground))
+                g.FillRectangle(b, rect);
+
             var textSize = g.MeasureString(Text, Font);
 
-            using (var b = new SolidBrush(Colors.LightText))
+            using (var b = new SolidBrush(ThemeProvider.CurrentTheme.LightText))
             {
                 g.DrawString(Text, Font, b, new PointF(-2, 0));
             }
 
-            using (var p = new Pen(Colors.GreyHighlight))
+            using (var p = new Pen(ThemeProvider.CurrentTheme.GreyHighlight))
             {
                 var p1 = new PointF(textSize.Width + 5, textSize.Height / 2);
                 var p2 = new PointF(rect.Width, textSize.Height / 2);

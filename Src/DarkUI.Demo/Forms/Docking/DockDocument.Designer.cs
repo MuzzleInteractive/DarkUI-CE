@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDocument = new System.Windows.Forms.TextBox();
+            this.txtDocument = new DarkUI.Controls.DarkTextBox();
             this.cmbOptions = new DarkUI.Controls.DarkDropdownList();
             this.SuspendLayout();
             // 
             // txtDocument
             // 
-            this.txtDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.txtDocument.BackColor = System.Drawing.Color.Empty;
             this.txtDocument.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDocument.ForeColor = System.Drawing.Color.Gainsboro;
+            this.txtDocument.ForeColor = System.Drawing.Color.Empty;
             this.txtDocument.Location = new System.Drawing.Point(0, 0);
             this.txtDocument.Multiline = true;
             this.txtDocument.Name = "txtDocument";
@@ -74,7 +74,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtDocument;
+        private DarkUI.Controls.DarkTextBox txtDocument;
         private DarkUI.Controls.DarkDropdownList cmbOptions;
     }
 }
