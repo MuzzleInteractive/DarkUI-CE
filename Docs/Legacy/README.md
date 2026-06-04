@@ -20,16 +20,16 @@ You can also read the [GitHub project wiki](https://github.com/RobinPerris/DarkU
 ### Screenshots
 Game map editor
 
-<img src="Screenshots\Game Map Editor.png">
+<img src="DarkUI_CrystalToolset_GameMapEditor.png">
 
 Lua script editor
 
-<img src="Screenshots\Lua Script Editor.png">
+<img src="DarkUI_CrystalToolset_LuaScriptEditor.png">
 
 Example docking application
 
-<img src="Screenshots\Example Docking Application.png">
+<img src="DarkUI_Example_DockingApplication.png">
 
 Controls preview
 
-<img src="Screenshots\Controls Preview.png">
+<img src="DarkUI_Example_ControlsPreview.png">

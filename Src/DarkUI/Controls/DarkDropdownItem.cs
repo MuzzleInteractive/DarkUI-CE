@@ -5,8 +5,8 @@ namespace DarkUI.Controls
     public class DarkDropdownItem
     {
         public string Text { get; set; }
-
         public Bitmap Icon { get; set; }
+        public object Tag { get; set; }
 
         public DarkDropdownItem()
         {
