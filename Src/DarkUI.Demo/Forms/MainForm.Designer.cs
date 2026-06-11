@@ -64,6 +64,7 @@ namespace DarkUI.Demo.Forms
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.DockPanel = new DarkUI.Docking.DarkDockPanel();
             this.darkSeparator1 = new DarkUI.Controls.DarkSeparator();
+            this.mnuSystemTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.toolMain.SuspendLayout();
             this.stripMain.SuspendLayout();
@@ -71,6 +72,7 @@ namespace DarkUI.Demo.Forms
             // 
             // mnuMain
             // 
+            this.mnuMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
@@ -87,6 +89,7 @@ namespace DarkUI.Demo.Forms
             // 
             // mnuFile
             // 
+            this.mnuFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuNewFile,
             this.toolStripSeparator1,
@@ -126,9 +129,11 @@ namespace DarkUI.Demo.Forms
             // 
             // mnuView
             // 
+            this.mnuView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDialog,
             this.toolStripSeparator3,
+            this.mnuSystemTheme,
             this.mnuLightTheme,
             this.mnuDarkTheme});
             this.mnuView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -144,8 +149,30 @@ namespace DarkUI.Demo.Forms
             this.mnuDialog.Size = new System.Drawing.Size(180, 22);
             this.mnuDialog.Text = "&Dialog test";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuLightTheme
+            // 
+            this.mnuLightTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.mnuLightTheme.Name = "mnuLightTheme";
+            this.mnuLightTheme.Size = new System.Drawing.Size(180, 22);
+            this.mnuLightTheme.Text = "Light Theme";
+            this.mnuLightTheme.Click += new System.EventHandler(this.mnuLightTheme_Click);
+            // 
+            // mnuDarkTheme
+            // 
+            this.mnuDarkTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.mnuDarkTheme.Name = "mnuDarkTheme";
+            this.mnuDarkTheme.Size = new System.Drawing.Size(180, 22);
+            this.mnuDarkTheme.Text = "Dark Theme";
+            this.mnuDarkTheme.Click += new System.EventHandler(this.mnuDarkTheme_Click);
+            // 
             // mnuTools
             // 
+            this.mnuTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.checkableToolStripMenuItem,
             this.checkableWithIconToolStripMenuItem,
@@ -154,7 +181,7 @@ namespace DarkUI.Demo.Forms
             this.checkedWithIconToolStripMenuItem});
             this.mnuTools.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(46, 20);
+            this.mnuTools.Size = new System.Drawing.Size(47, 20);
             this.mnuTools.Text = "&Tools";
             // 
             // checkableToolStripMenuItem
@@ -207,6 +234,7 @@ namespace DarkUI.Demo.Forms
             // 
             // mnuWindow
             // 
+            this.mnuWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProject,
             this.mnuProperties,
@@ -224,7 +252,7 @@ namespace DarkUI.Demo.Forms
             this.mnuProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuProject.Image = ((System.Drawing.Image)(resources.GetObject("mnuProject.Image")));
             this.mnuProject.Name = "mnuProject";
-            this.mnuProject.Size = new System.Drawing.Size(180, 22);
+            this.mnuProject.Size = new System.Drawing.Size(156, 22);
             this.mnuProject.Text = "&Project Explorer";
             // 
             // mnuProperties
@@ -233,7 +261,7 @@ namespace DarkUI.Demo.Forms
             this.mnuProperties.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuProperties.Image = ((System.Drawing.Image)(resources.GetObject("mnuProperties.Image")));
             this.mnuProperties.Name = "mnuProperties";
-            this.mnuProperties.Size = new System.Drawing.Size(180, 22);
+            this.mnuProperties.Size = new System.Drawing.Size(156, 22);
             this.mnuProperties.Text = "P&roperties";
             // 
             // mnuConsole
@@ -242,7 +270,7 @@ namespace DarkUI.Demo.Forms
             this.mnuConsole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuConsole.Image = ((System.Drawing.Image)(resources.GetObject("mnuConsole.Image")));
             this.mnuConsole.Name = "mnuConsole";
-            this.mnuConsole.Size = new System.Drawing.Size(180, 22);
+            this.mnuConsole.Size = new System.Drawing.Size(156, 22);
             this.mnuConsole.Text = "&Console";
             // 
             // mnuLayers
@@ -251,7 +279,7 @@ namespace DarkUI.Demo.Forms
             this.mnuLayers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuLayers.Image = ((System.Drawing.Image)(resources.GetObject("mnuLayers.Image")));
             this.mnuLayers.Name = "mnuLayers";
-            this.mnuLayers.Size = new System.Drawing.Size(180, 22);
+            this.mnuLayers.Size = new System.Drawing.Size(156, 22);
             this.mnuLayers.Text = "&Layers";
             // 
             // mnuHistory
@@ -260,11 +288,12 @@ namespace DarkUI.Demo.Forms
             this.mnuHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mnuHistory.Image = ((System.Drawing.Image)(resources.GetObject("mnuHistory.Image")));
             this.mnuHistory.Name = "mnuHistory";
-            this.mnuHistory.Size = new System.Drawing.Size(180, 22);
+            this.mnuHistory.Size = new System.Drawing.Size(156, 22);
             this.mnuHistory.Text = "&History";
             // 
             // mnuHelp
             // 
+            this.mnuHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAbout});
             this.mnuHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -285,6 +314,7 @@ namespace DarkUI.Demo.Forms
             // 
             this.toolMain.AutoSize = false;
             this.toolMain.BackColor = System.Drawing.Color.Transparent;
+            this.toolMain.DrawBorder = false;
             this.toolMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -299,6 +329,7 @@ namespace DarkUI.Demo.Forms
             // btnNewFile
             // 
             this.btnNewFile.AutoSize = false;
+            this.btnNewFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.btnNewFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnNewFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.btnNewFile.Image = ((System.Drawing.Image)(resources.GetObject("btnNewFile.Image")));
@@ -327,6 +358,8 @@ namespace DarkUI.Demo.Forms
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.AutoSize = false;
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(1, 0, 50, 0);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 16);
@@ -335,6 +368,8 @@ namespace DarkUI.Demo.Forms
             // 
             // toolStripStatusLabel6
             // 
+            this.toolStripStatusLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.toolStripStatusLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripStatusLabel6.Margin = new System.Windows.Forms.Padding(0, 0, 50, 2);
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(757, 14);
@@ -343,6 +378,8 @@ namespace DarkUI.Demo.Forms
             // 
             // toolStripStatusLabel5
             // 
+            this.toolStripStatusLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.toolStripStatusLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripStatusLabel5.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(46, 16);
@@ -367,21 +404,14 @@ namespace DarkUI.Demo.Forms
             this.darkSeparator1.TabIndex = 4;
             this.darkSeparator1.Text = "darkSeparator1";
             // 
-            // mnuLightTheme
+            // mnuSystemTheme
             // 
-            this.mnuLightTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.mnuLightTheme.Name = "mnuLightTheme";
-            this.mnuLightTheme.Size = new System.Drawing.Size(180, 22);
-            this.mnuLightTheme.Text = "Light Theme";
-            this.mnuLightTheme.Click += new System.EventHandler(this.mnuLightTheme_Click);
-            // 
-            // mnuDarkTheme
-            // 
-            this.mnuDarkTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.mnuDarkTheme.Name = "mnuDarkTheme";
-            this.mnuDarkTheme.Size = new System.Drawing.Size(180, 22);
-            this.mnuDarkTheme.Text = "Dark Theme";
-            this.mnuDarkTheme.Click += new System.EventHandler(this.mnuDarkTheme_Click);
+            this.mnuSystemTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.mnuSystemTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.mnuSystemTheme.Name = "mnuSystemTheme";
+            this.mnuSystemTheme.Size = new System.Drawing.Size(180, 22);
+            this.mnuSystemTheme.Text = "System Theme";
+            this.mnuSystemTheme.Click += new System.EventHandler(this.mnuSystemTheme_Click);
             // 
             // MainForm
             // 
@@ -394,11 +424,11 @@ namespace DarkUI.Demo.Forms
             this.Controls.Add(this.darkSeparator1);
             this.Controls.Add(this.mnuMain);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dark UI - Example";
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
@@ -445,6 +475,7 @@ namespace DarkUI.Demo.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mnuLightTheme;
         private System.Windows.Forms.ToolStripMenuItem mnuDarkTheme;
+        private System.Windows.Forms.ToolStripMenuItem mnuSystemTheme;
     }
 }
 

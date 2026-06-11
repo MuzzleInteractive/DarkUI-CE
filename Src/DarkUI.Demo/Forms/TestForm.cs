@@ -1,15 +1,6 @@
 ﻿using DarkUI.Config;
-using DarkUI.Extensions;
 using DarkUI.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DarkUI.Demo.Forms
 {
@@ -26,16 +17,19 @@ namespace DarkUI.Demo.Forms
             frm.Show();
         }
 
-        private void BTNDarkTheme_Click(object sender, EventArgs e)
+        private void BTNSystemTheme_Click(object sender, EventArgs e)
         {
-            ThemeProvider.CurrentTheme = new DarkTheme();
-            ThemeProvider.ApplyTheme();
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["System"];
         }
 
         private void BTNLightTheme_Click(object sender, EventArgs e)
         {
-            ThemeProvider.CurrentTheme = new LightTheme();
-            ThemeProvider.ApplyTheme();
-        }        
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["Light"];
+        }
+
+        private void BTNDarkTheme_Click(object sender, EventArgs e)
+        {
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["Dark"];
+        }
     }
 }

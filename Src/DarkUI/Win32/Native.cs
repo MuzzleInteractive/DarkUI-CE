@@ -1,13 +1,13 @@
-﻿using System;
+﻿using DarkUI.Config;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace DarkUI.Win32
 {
-    internal sealed class Native
+    public sealed class Native
     {
-        // Backdrop types (Windows 11 22621+)
-        internal enum SystemBackdropType
+        public enum SystemBackdropType
         {
             Auto = 0,       // DWMSBT_AUTO - Let DWM decide
             None = 1,       // DWMSBT_NONE - No backdrop
@@ -16,7 +16,7 @@ namespace DarkUI.Win32
             MicaAlt = 4,    // DWMSBT_TABBEDWINDOW - Like Mica but stronger wallpaper tint (more contrast)
         }
 
-        internal enum WindowCornerPreference
+        public enum WindowCornerPreference
         {
             Default = 0,    //DWMWCP_DEFAULT
             DoNotRound = 1, //DWMWCP_DONOTROUND
@@ -38,6 +38,11 @@ namespace DarkUI.Win32
 
         [DllImport("dwmapi.dll")]
         internal static extern int DwmExtendFrameIntoClientArea(IntPtr hwnd, ref MARGINS margins);
+
+        // string themeName = ThemeProvider.CurrentTheme.UseImmersiveDarkMode ? "DarkMode_Explorer" : "Explorer";
+        // Native.SetWindowTheme(c.Handle, themeName, null);
+        [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
+        internal static extern int SetWindowTheme(IntPtr hWnd, string pszSubAppName, string pszSubIdList);
 
         internal static void EnableImmersiveDarkMode(IntPtr handle, bool enabled)
         {
@@ -75,6 +80,13 @@ namespace DarkUI.Win32
                 cyBottomHeight = -1
             };
             DwmExtendFrameIntoClientArea(hwnd, ref margins);
+        }
+
+        // Aplies window theming using uxtheme, can be done to specific controls like scrollbars
+        internal static void SetWindowTheme(IntPtr handle, bool darkMode)
+        {
+            string themeName = darkMode ? "DarkMode_Explorer" : "Explorer";
+            SetWindowTheme(handle, themeName, null);
         }
     }
 

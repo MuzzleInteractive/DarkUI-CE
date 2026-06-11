@@ -206,16 +206,19 @@ namespace DarkUI.Demo.Forms
             return null;
         }
 
+        private void mnuSystemTheme_Click(object sender, EventArgs e)
+        {
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["System"];
+        }
+
         private void mnuLightTheme_Click(object sender, EventArgs e)
         {
-            ThemeProvider.CurrentTheme = new LightTheme();
-            ThemeProvider.ApplyTheme();
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["Light"];
         }
 
         private void mnuDarkTheme_Click(object sender, EventArgs e)
         {
-            ThemeProvider.CurrentTheme = new DarkTheme();
-            ThemeProvider.ApplyTheme();
+            ThemeProvider.CurrentTheme = ThemeProvider.Themes["Dark"];
         }
     }
 }

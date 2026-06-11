@@ -388,7 +388,7 @@ namespace DarkUI.Controls
             Invalidate();
         }
 
-        private void UpdateThumb(bool forceRefresh = false)
+        internal void UpdateThumb(bool forceRefresh = false)
         {
             if (ViewSize >= Maximum)
                 return;

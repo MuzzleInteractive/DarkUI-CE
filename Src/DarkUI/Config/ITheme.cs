@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using static DarkUI.Win32.Native;
 
 namespace DarkUI.Config
 {
@@ -6,8 +7,8 @@ namespace DarkUI.Config
     {
         string Name { get; }
         bool UseImmersiveDarkMode { get; }
-        int CornerPreference { get; }
-        int BackdropType { get; }
+        WindowCornerPreference CornerPreference { get; }
+        SystemBackdropType BackdropType { get; }
         Color GreyBackground { get; }
         Color HeaderBackground { get; }
         Color AccentBackground { get; }

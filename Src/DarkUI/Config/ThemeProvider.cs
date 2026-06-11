@@ -11,72 +11,102 @@ namespace DarkUI.Config
 {
     public static class ThemeProvider
     {
-        public static Dictionary<string, ITheme> Themes { get; private set; } = new Dictionary<string, ITheme>(StringComparer.OrdinalIgnoreCase);
+        public static Dictionary<string, ITheme> Themes { get; set; } = new Dictionary<string, ITheme>(StringComparer.OrdinalIgnoreCase);
         public static ITheme CurrentTheme
         {
             get
             {
                 if (_currentTheme is null)
-                    _currentTheme = new DarkTheme();
+                    _currentTheme = Themes[DarkTheme.ThemeName];
 
                 return _currentTheme;
             }
             set
             {
-                if (value is null)
-                    _currentTheme = new DarkTheme();
-                else
-                    _currentTheme = value;
+                ITheme newTheme = value ?? Themes[DarkTheme.ThemeName];
+
+                if (newTheme is SystemTheme system)
+                    system.Refresh();
+
+                if (ReferenceEquals(_currentTheme, newTheme))
+                    return;
+
+                _currentTheme = newTheme;
+                OnThemeChanged();
             }
         }
 
         private static ITheme _currentTheme = null;
 
+        public static event EventHandler ThemeChanged;
+
         static ThemeProvider()
         {
-            ITheme system = GetSystemAwareTheme();
+            ITheme system = new SystemTheme();
             ITheme light = new LightTheme();
             ITheme dark = new DarkTheme();
 
-            Themes.Add("System", system);
-            Themes.Add(light.Name, new LightTheme());
-            Themes.Add(dark.Name, new DarkTheme());
+            Themes.Add(system.Name, system);
+            Themes.Add(light.Name, light);
+            Themes.Add(dark.Name, dark);
 
-            _currentTheme = system;
+            _currentTheme = dark;
+
+            // Detect OS light/dark theme changes
+            SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
         }
 
-        public static ITheme GetSystemAwareTheme()
+        private static void OnThemeChanged()
         {
-            object value = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", 1);
-            bool appsUseLightTheme = value is int intValue ? intValue != 0 : true;
-
-            if (appsUseLightTheme)
-                return new LightTheme();
-            else
-                return new DarkTheme();
+            ApplyTheme();
+            ThemeChanged?.Invoke(null, EventArgs.Empty);
         }
 
         public static void ApplyTheme()
         {
-            IEnumerable<DarkForm> openForms = Application.OpenForms.OfType<DarkForm>();
+            List<DarkForm> openForms = Application.OpenForms.OfType<DarkForm>().ToList();
 
             foreach (DarkForm frm in openForms)
-            {
-                frm.RefreshRecursive();
-                Native.EnableImmersiveDarkMode(frm.Handle, _currentTheme.UseImmersiveDarkMode);
-                Native.SetCornerPreference(frm.Handle, (Native.WindowCornerPreference)_currentTheme.CornerPreference);
-                //Native.ExtendFrameFully(frm.Handle);
-                Native.SetBackdrop(frm.Handle, (Native.SystemBackdropType)_currentTheme.BackdropType);
-            }
+                ApplyTheme(frm);
         }
 
         public static void ApplyTheme(Form frm)
         {
+            if (frm is null)
+                throw new ArgumentNullException(nameof(frm));
+
+            // Always (re)subscribe: DWM attributes are per-HWND and are lost whenever WinForms recreates the handle (ShowInTaskbar, RightToLeft, ...)
+            frm.HandleCreated -= OnFormHandleCreated;
+            frm.HandleCreated += OnFormHandleCreated;
+
+            if (!frm.IsHandleCreated)
+                return;
+
             Native.EnableImmersiveDarkMode(frm.Handle, _currentTheme.UseImmersiveDarkMode);
-            Native.SetCornerPreference(frm.Handle, (Native.WindowCornerPreference)_currentTheme.CornerPreference);
+            Native.SetCornerPreference(frm.Handle, _currentTheme.CornerPreference);
+            Native.SetBackdrop(frm.Handle, _currentTheme.BackdropType);
             //Native.ExtendFrameFully(frm.Handle);
-            Native.SetBackdrop(frm.Handle, (Native.SystemBackdropType)_currentTheme.BackdropType);
             frm.RefreshRecursive();
+        }
+
+        // Events
+
+        private static void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category != UserPreferenceCategory.General)
+                return;
+
+            if (!(Themes[SystemTheme.ThemeName] is SystemTheme system))
+                return;
+
+            if (system.Refresh() || ReferenceEquals(_currentTheme, system))
+                OnThemeChanged();
+        }
+
+        private static void OnFormHandleCreated(object sender, EventArgs e)
+        {
+            if (sender is Form frm)
+                ApplyTheme(frm);
         }
     }
 }

@@ -5,10 +5,12 @@ namespace DarkUI.Config
 {
     public class DarkTheme : ITheme
     {
-        public string Name => "Dark";
+        internal const string ThemeName = "Dark";
+
+        public string Name => ThemeName;
         public bool UseImmersiveDarkMode => true;
-        public int CornerPreference => (int)WindowCornerPreference.DoNotRound;
-        public int BackdropType => (int)SystemBackdropType.Mica;
+        public WindowCornerPreference CornerPreference => WindowCornerPreference.DoNotRound;
+        public SystemBackdropType BackdropType => SystemBackdropType.Mica;
         public Color GreyBackground => ColorTranslator.FromHtml("#3C3F41");
         public Color HeaderBackground => ColorTranslator.FromHtml("#393C3E");
         public Color AccentBackground => ColorTranslator.FromHtml("#424D5F");
